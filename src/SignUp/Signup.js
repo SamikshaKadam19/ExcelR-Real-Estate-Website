@@ -1,4 +1,6 @@
-// Signup.js
+
+import Navbar from '../Navbar/Navbar';
+
 import React, { useState } from 'react';
 
 const Signup = ({ handleSignup }) => {
@@ -13,6 +15,7 @@ const Signup = ({ handleSignup }) => {
 
   return (
     <div>
+      <Navbar/>
       <h2>Sign Up</h2>
       <form onSubmit={handleSubmit}>
         <input

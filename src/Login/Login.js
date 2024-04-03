@@ -1,5 +1,5 @@
-// Login.js
 import React, { useState } from 'react';
+import Navbar from '../Navbar/Navbar';
 
 const Login = ({ handleLogin }) => {
   const [email, setEmail] = useState('');
@@ -13,6 +13,7 @@ const Login = ({ handleLogin }) => {
 
   return (
     <div>
+      <Navbar/>
       <h2>Login</h2>
       <form onSubmit={handleSubmit}>
         <input

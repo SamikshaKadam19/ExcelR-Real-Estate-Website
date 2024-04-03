@@ -1,0 +1,16 @@
+.listing{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 15px;
+}
+.item{
+    height: 30px;
+    margin-top: 10px;
+    padding: 17px;
+    margin-bottom: 40px;
+}
+#iteming{
+    height: 30px;
+    margin-left: 20px;
+}
