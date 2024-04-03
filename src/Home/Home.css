@@ -14,3 +14,9 @@
     height: 30px;
     margin-left: 20px;
 }
+a{
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+}
+

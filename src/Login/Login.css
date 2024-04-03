@@ -1,0 +1,36 @@
+.LoginContainer{
+    display: flex;
+    justify-content: space-evenly;
+ }
+ .firstpart{
+     margin-top: 40px;
+     margin-left: 20px;
+     width: 330px;
+     height: 400px;
+     padding: 20px;
+     /* box-shadow: 0px 0.5px 1px 1px rgb(201, 200, 200); */
+     border-radius: 10px;
+ }
+ #secondpartimage{
+     width: 900px;
+ }
+ #input{
+    padding: 5px;
+    width: 300px;
+    border: none;
+    border-radius: 5px;
+    margin-top: 3px;
+    box-shadow: 0px 0.5px 1px 1px rgb(201, 200, 200);
+ }
+ .heading{
+     text-align: center;
+     font-size: 30px;
+ }
+ #submitbutton{
+     margin-left: 110px;
+     padding: 5px;
+     font-size: 17px;
+     border-radius: 5px;
+     border: none;
+     box-shadow: 0px 0.5px 1px 1px rgb(201, 200, 200);
+ }
