@@ -2,6 +2,8 @@
 import React, { useState } from 'react';
 import Login from './Login';
 import Signup from './Signup';
+import Navbar from './Navbar/Navbar';
+import Home from './Home/Home';
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -17,8 +19,8 @@ const App = () => {
     console.log('Signing up with:', email, password);
     setIsLoggedIn(true);
   };
-
   return (
+    <>
     <div>
       {isLoggedIn ? (
         <h1>Welcome! You are logged in.</h1>
@@ -29,6 +31,11 @@ const App = () => {
         </div>
       )}
     </div>
+    <Navbar/>
+    <Home/>
+    <Login/>
+    <Signup/>
+    </>
   );
 };
 
