@@ -2,6 +2,7 @@ import React from 'react';
 import './Home.css';
 import Navbar from '../Navbar/Navbar';
 import "flickity/css/flickity.css";
+import { Link } from 'react-router-dom';
 const Flickity = require('react-flickity-component');
 
 const flickityOptions = {
@@ -15,28 +16,28 @@ function Home() {
 
       <div class="listing">
         <div class="item">
-          <a href='../Banglow/Banglow.js'>
+          <Link to='/Banglow'>
             <img src="https://cdn-icons-png.flaticon.com/128/5448/5448555.png" alt="banglow" id="iteming" />
             <p>Banglow</p>
-          </a>
+          </Link>
         </div>
         <div class="item">
-          <a href='../Appartment/Appartment.js'>
+          <Link to='/Appartment'>
             <img src="https://cdn-icons-png.flaticon.com/128/1018/1018525.png" alt="apartment" id="iteming"></img>
             <p>Apartment</p>
-          </a>
+          </Link>
         </div>
         <div class="item">
-          <a href='../Cabin/Cabin.js'>
+          <Link to='/Cabin'>
             <img src="https://cdn-icons-png.flaticon.com/128/6173/6173957.png" alt="cabin" id="iteming"></img>
             <p>Office Cabin</p>
-          </a>
+          </Link>
         </div>
         <div class="item">
-          <a href='../Villas/Villas.js'>
+          <Link to='/Villas'>
             <img src="https://cdn-icons-png.flaticon.com/128/4565/4565530.png" alt="villas" id="iteming"></img>
             <p>Villas Home</p>
-          </a>
+          </Link>
         </div>
         <div class="item">
 

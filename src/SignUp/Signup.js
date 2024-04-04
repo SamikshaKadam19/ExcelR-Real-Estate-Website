@@ -49,8 +49,22 @@ const Signup = ({ handleSignup }) => {
             required id="input"
           /><br></br><br></br>
           Domain:
+          <div class="domain">
+          <div className="radio">
+          <label>
+            <input type="radio" value="Broker" />
+            Broker
+          </label>
+          </div>
+          <div className="radio">
+          <label>
+            <input type="radio" value="client" />
+            client
+          </label>
+        </div>
+        </div>
 <br></br><br></br>
-          <button type="submit" id="submitbutton">Sign Up</button>
+          <button type="submit" id="submitbutton">Register</button>
         </form>
         </div>
         <div>
