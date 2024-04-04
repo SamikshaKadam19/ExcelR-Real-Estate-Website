@@ -4,7 +4,7 @@
 }
 .firstpart{
     margin-top: 40px;
-    margin-left: 20px;
+    margin-left: 140px;
     width: 330px;
     height: 400px;
     padding: 20px;
@@ -13,6 +13,8 @@
 }
 #secondpartimage{
     width: 900px;
+    margin-left: 180px;
+
 }
 #input{
    padding: 5px;
@@ -33,4 +35,8 @@
     border-radius: 5px;
     border: none;
     box-shadow: 0px 0.5px 1px 1px rgb(201, 200, 200);
+}
+.domain{
+    display: flex;
+    justify-content: flex-start;
 }

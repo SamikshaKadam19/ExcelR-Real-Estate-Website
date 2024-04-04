@@ -4,6 +4,10 @@ import Login from './Login';
 import Signup from './Signup';
 import Navbar from './Navbar/Navbar';
 import Home from './Home/Home';
+import Banglow from './Banglow/Banglow';
+import Cabin from './Cabin/Cabin';
+import Apartment from './Apartment/Apartment';
+import Villas from './Villas/Villas';
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -35,6 +39,10 @@ const App = () => {
     <Home/>
     <Login/>
     <Signup/>
+    <Apartment/>
+    <Banglow/>
+    <Cabin/>
+    <Villas/>
     </>
   );
 };
