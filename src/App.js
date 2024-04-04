@@ -8,6 +8,7 @@ import Banglow from './Banglow/Banglow';
 import Cabin from './Cabin/Cabin';
 import Apartment from './Apartment/Apartment';
 import Villas from './Villas/Villas';
+import Like from './LikedPage/Like';
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -43,6 +44,7 @@ const App = () => {
     <Banglow/>
     <Cabin/>
     <Villas/>
+    <Like/>
     </>
   );
 };
