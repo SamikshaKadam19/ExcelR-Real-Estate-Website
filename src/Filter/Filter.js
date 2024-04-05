@@ -20,13 +20,44 @@ const PropertyFilter = ({ cities, onSearch }) => {
       {
         id: 1,
         title: 'Beautiful Apartment',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+        description: 'Cozy Apartment near Downtown',
         image: 'https://example.com/apartment-image.jpg',
       },
       {
         id: 2,
-        title: 'Luxurious Villa',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+        title: 'Apartment',
+        description: 'Spacious Apartment in Suburbia',
+        image: 'https://example.com/villa-image.jpg',
+      },
+      {
+        id: 2,
+        title: 'Bunglow',
+        description: 'Cozy bungalow with two bedrooms, ideal for small families.',
+        image: 'https://example.com/villa-image.jpg',
+      },
+      {
+        id: 2,
+        title: 'Apartment',
+        description: 'Rustic cabins made of wood, perfect for a cozy retreat in nature.',
+        image: 'https://example.com/villa-image.jpg',
+      },
+      {
+        id: 2,
+        title: 'Bunglow',
+        description: 'Traditional log cabins with modern amenities, offering a blend of comfort and nature.',
+        image: 'https://example.com/villa-image.jpg',
+      },
+      {
+        id: 2,
+        title: 'Villa',
+        description: 'Charming Loft in the City',
+        location: '1011 Pine Lane',
+        image: 'https://example.com/villa-image.jpg',
+      },
+      {
+        id: 2,
+        title: 'Appartment',
+        description: 'Modern Condo with Amenities',
         image: 'https://example.com/villa-image.jpg',
       },
       // Add more property objects as needed

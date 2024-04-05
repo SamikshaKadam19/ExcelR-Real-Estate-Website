@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../Cabin/Cabin.css';
+import Navbar from '../Navbar/Navbar';
 import Like from '../LikedPage/Like';
 import Cabin1 from '../assets/Cabin/Cabin1.jpg';
 import Cabin2 from '../assets/Cabin/CAbin2.webp';
@@ -12,8 +13,6 @@ import Cabin6 from '../assets/Cabin/Cabin6.webp';
 import Cabin7 from '../assets/Cabin/Cabin7.jpg';
 import Cabin8 from '../assets/Cabin/Cabin8.jpg';
 import Cabin9 from '../assets/Cabin/Cabin9.avif';
-
-
 
 const Cabin = () => {
   const [likedCabins, setLikedCabins] = useState([]);
@@ -98,6 +97,14 @@ const Cabin = () => {
       type: 'Log',
       description: 'Cozy log cabins nestled in the mountains, providing a serene retreat amidst nature.'
     },
+    {
+      id: 9,
+      image: Cabin9,
+      liked: false,
+      price: 200000,
+      type: 'Log',
+      description: 'Cozy log cabins nestled in the mountains, providing a serene retreat amidst nature.'
+    },
     // Add more cabin data here
     // Add more cabin data here
   ];
@@ -126,7 +133,7 @@ const Cabin = () => {
 
   return (
     <div>
-      <h2>Cabin Listings</h2>
+      <Navbar/>
       <div className="filters">
         <label>
           Filter by Price:
@@ -148,6 +155,12 @@ const Cabin = () => {
         {filteredCabins.map((cabin) => (
           <div key={cabin.id} className="property-card">
             <img src={cabin.image} alt={`Cabin ${cabin.id}`} />
+            <div className="banglow-details">
+              <h3>{`Banglow ${cabin.id}`}</h3>
+              <p><strong>Price:</strong> ${cabin.price}</p>
+              <p><strong>Type:</strong> {cabin.type}</p>
+              <p><strong>Description:</strong> {cabin.description}</p>
+            </div>
             <button onClick={() => handleLike(cabin.id)}>
               {cabin.liked ? 'Unlike' : 'Like'}
             </button>
@@ -157,6 +170,7 @@ const Cabin = () => {
           </div>
         ))}
       </div>
+      <Link to='/Appartment'> <button className='cabinbutton'>Go To Appartment</button></Link>
       {/* Pass likedCabins state and setLikedCabins function as props to Like component */}
       <Like likedItems={likedCabins} />
     </div>

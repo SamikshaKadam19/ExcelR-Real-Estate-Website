@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../Banglow/Banglow.css';
+import Navbar from '../Navbar/Navbar';
 import Like from '../LikedPage/Like';
 import Banglow1 from '../assets/Banglow/Banglow1.jpg';
 import Banglow2 from '../assets/Banglow/Banglow 2.jpg';
@@ -76,6 +77,30 @@ const Banglow = () => {
       type: '3BHK',
       description: 'Charming bungalow with three bedrooms, offering a tranquil retreat.'
     },
+    {
+      id: 6,
+      image: Banglow6,
+      liked: false,
+      price: 300000,
+      type: '3BHK',
+      description: 'Rustic bungalow with three bedrooms, nestled amidst nature.'
+    },
+    {
+      id: 7,
+      image: Banglow7,
+      liked: false,
+      price: 300000,
+      type: '3BHK',
+      description: 'Charming bungalow with three bedrooms, offering a tranquil retreat.'
+    },
+    {
+      id: 7,
+      image: Banglow7,
+      liked: false,
+      price: 300000,
+      type: '3BHK',
+      description: 'Charming bungalow with three bedrooms, offering a tranquil retreat.'
+    },
     // Add more bungalow data here
   ];
 
@@ -103,7 +128,7 @@ const Banglow = () => {
 
   return (
     <div>
-      <h2>Bungalow Listings</h2>
+      <Navbar/>
       <div className="filters">
         <label>
           Filter by Price:
@@ -113,6 +138,9 @@ const Banglow = () => {
           Filter by Type:
           <select name="type" value={filter.type} onChange={handleFilterChange}>
             <option value="">All</option>
+            <option value="1RK">1RK</option>
+            <option value="1BHK">1BHK</option>
+            <option value="1BHK">2BHK</option>
             {/* Add options for bungalow types */}
           </select>
         </label>
@@ -121,6 +149,7 @@ const Banglow = () => {
           <input type="text" name="postalCode" value={filter.postalCode} onChange={handleFilterChange} />
         </label>
       </div>
+
       <div className="property-list">
         {filteredBanglows.map((banglow) => (
           <div key={banglow.id} className="property-card">
@@ -140,6 +169,7 @@ const Banglow = () => {
           </div>
         ))}
       </div>
+     <Link to='/Villas'> <button className='villabutton'>Go To Viilas</button></Link>
       {/* Pass likedBanglows state and setLikedBanglows function as props to Like component */}
       <Like likedItems={likedBanglows} />
     </div>
