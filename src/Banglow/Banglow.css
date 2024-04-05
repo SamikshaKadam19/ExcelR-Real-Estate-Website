@@ -40,6 +40,50 @@
   background-color: #45a049;
 }
 /* Property cards */
+/* Apartment.css */
+
+/* Filter section */
+.filters {
+  margin-bottom: 20px;
+  padding: 20px;
+  background-color: #f2f2f2; /* Light background color */
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.filters label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.filters input,
+.filters select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.filters button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.filters button:hover {
+  background-color: #45a049;
+}
+
+/* Property cards */
 .property-list {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -53,6 +97,7 @@
   overflow: hidden;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   margin-bottom: 20px; /* Add margin at the bottom of each card */
+  transition: transform 0.3s; /* Add transition for smooth hover effect */
 }
 
 .property-card img {
@@ -89,4 +134,9 @@
 
 .property-card a:hover {
   background-color: #005f79;
+}
+
+/* Hover effect */
+.property-card:hover {
+  transform: translateY(-5px); /* Move the card up by 5px on hover */
 }

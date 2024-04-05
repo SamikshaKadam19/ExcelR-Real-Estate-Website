@@ -118,7 +118,8 @@ const Villas = () => {
   const filteredVillas = villas.filter(villa => {
     return (
       (!filter.price || villa.price <= parseInt(filter.price)) &&
-      (!filter.type || villa.type === filter.type)
+      (!filter.type || villa.type === filter.type) &&
+      (!filter.postalCode || villas.postalCode === filter.postalCode)
     );
   });
 
@@ -136,6 +137,10 @@ const Villas = () => {
             <option value="">All</option>
             {/* Add options for villa types */}
           </select>
+        </label>
+        <label>
+          Filter by Postal Code:
+          <input type="text" name="postalCode" value={filter.postalCode} onChange={handleFilterChange} />
         </label>
       </div>
       <div className="property-list">

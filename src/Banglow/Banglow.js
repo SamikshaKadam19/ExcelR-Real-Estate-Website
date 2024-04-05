@@ -96,7 +96,8 @@ const Banglow = () => {
   const filteredBanglows = banglows.filter(banglow => {
     return (
       (!filter.price || banglow.price <= parseInt(filter.price)) &&
-      (!filter.type || banglow.type === filter.type)
+      (!filter.type || banglow.type === filter.type)&&
+      (!filter.postalCode || banglow.postalCode === filter.postalCode)
     );
   });
 
@@ -114,6 +115,10 @@ const Banglow = () => {
             <option value="">All</option>
             {/* Add options for bungalow types */}
           </select>
+        </label>
+        <label>
+          Filter by Postal Code:
+          <input type="text" name="postalCode" value={filter.postalCode} onChange={handleFilterChange} />
         </label>
       </div>
       <div className="property-list">

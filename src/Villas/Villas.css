@@ -53,6 +53,7 @@
   overflow: hidden;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   margin-bottom: 20px; /* Add margin at the bottom of each card */
+  transition: transform 0.3s; /* Add transition for smooth hover effect */
 }
 
 .property-card img {
@@ -89,4 +90,9 @@
 
 .property-card a:hover {
   background-color: #005f79;
+}
+
+/* Hover effect */
+.property-card:hover {
+  transform: translateY(-5px); /* Move the card up by 5px on hover */
 }
