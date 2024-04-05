@@ -9,6 +9,7 @@ import Cabin from './Cabin/Cabin';
 import Apartment from './Apartment/Apartment';
 import Villas from './Villas/Villas';
 import Like from './LikedPage/Like';
+import Filter from './Filter/Filter';
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -24,8 +25,14 @@ const App = () => {
     console.log('Signing up with:', email, password);
     setIsLoggedIn(true);
   };
+  const handleSearch = (filters) => {
+    // Handle search logic here
+    console.log('Search filters:', filters);
+  };
   return (
     <>
+
+    <Filter onSearch={handleSearch} />
     <div>
       {isLoggedIn ? (
         <h1>Welcome! You are logged in.</h1>
@@ -45,6 +52,7 @@ const App = () => {
     <Cabin/>
     <Villas/>
     <Like/>
+    
     </>
   );
 };

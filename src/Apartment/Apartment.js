@@ -155,6 +155,7 @@ const Apartment = () => {
             <option value="">All</option>
             <option value="1RK">1RK</option>
             <option value="1BHK">1BHK</option>
+            <option value="1BHK">2BHK</option>
             {/* Add more options for apartment types */}
           </select>
         </label>

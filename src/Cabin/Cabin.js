@@ -119,7 +119,8 @@ const Cabin = () => {
   const filteredCabins = cabins.filter(cabin => {
     return (
       (!filter.price || cabin.price <= parseInt(filter.price)) &&
-      (!filter.type || cabin.type === filter.type)
+      (!filter.type || cabin.type === filter.type)&&
+      (!filter.postalCode || cabin.postalCode === filter.postalCode)
     );
   });
 
@@ -137,6 +138,10 @@ const Cabin = () => {
             <option value="">All</option>
             {/* Add options for cabin types */}
           </select>
+        </label>
+        <label>
+          Filter by Postal Code:
+          <input type="text" name="postalCode" value={filter.postalCode} onChange={handleFilterChange} />
         </label>
       </div>
       <div className="property-list">
