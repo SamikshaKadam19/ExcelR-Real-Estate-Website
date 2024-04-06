@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Like from '../LikedPage/Like';
 import '../Apartment/Apartment.css';
+import Navbar from '../Navbar/Navbar';
 import Apartment1 from '../assets/Apartment/Apartment1.jpg';
 import Apartment2 from '../assets/Apartment/apartment 2.jpg';
 import Apartment3 from '../assets/Apartment/Apartment 3.jpg';
@@ -21,10 +22,6 @@ const Apartment = () => {
     type: '',
     postalCode: ''
   });
-
-  
-  
-    
 
   const apartments = [
     {
@@ -117,6 +114,16 @@ const Apartment = () => {
       type: '1BHK',
       postalCode: '68420'
     },
+    {
+      id: 9,
+      image: Apartment9,
+      liked: false,
+      name: 'Sunny Apartment with Private Patio',
+      location: '2021 Sunflower Avenue',
+      price: 1900,
+      type: '1BHK',
+      postalCode: '68420'
+    },
     // Add more apartment data here
   ];
   const handleLike = (id) => {
@@ -143,8 +150,8 @@ const Apartment = () => {
 
   return (
     <div>
-      <h2>Apartment Listings</h2>
-      <div>
+      <Navbar/>
+      <div className="filters">
         <label>
           Filter by Price:
           <input type="number" name="price" value={filter.price} onChange={handleFilterChange} />
@@ -172,6 +179,8 @@ const Apartment = () => {
               <h3>{apartment.name}</h3>
               <p><strong>Location:</strong> {apartment.location}</p>
               <p><strong>Price:</strong> ${apartment.price}</p>
+              <p><strong>Type:</strong> {apartment.type}</p>
+              <p><strong>Description:</strong> {apartment.description}</p>
             </div>
             <button onClick={() => handleLike(apartment.id)}>
               {apartment.liked ? 'Unlike' : 'Like'}
@@ -182,6 +191,7 @@ const Apartment = () => {
           </div>
         ))}
       </div>
+      <Link to='/Banglow'> <button className='bunglowbutton'>Go To Bunglow</button></Link>
       {/* Pass likedApartments state and setLikedApartments function as props to Like component */}
       <Like likedItems={likedApartments} />
     </div>

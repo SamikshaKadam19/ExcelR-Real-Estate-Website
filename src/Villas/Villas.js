@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../Villas/Villas.css';
+import Navbar from '../Navbar/Navbar';
 import Like from '../LikedPage/Like';
 import Villa1 from '../assets/Villas/Villa1.avif'
 import Villa2 from '../assets/Villas/Villa2.webp';
@@ -98,6 +99,14 @@ const Villas = () => {
       type: 'Standard',
       description: 'Tranquil villas nestled amidst natural beauty, ideal for a peaceful retreat.'
     },
+    {
+      id: 9,
+      image: Villa9,
+      liked: false,
+      price: 300000,
+      type: 'Standard',
+      description: 'Tranquil villas nestled amidst natural beauty, ideal for a peaceful retreat.'
+    },
     // Add more villa
   ];
 
@@ -125,7 +134,7 @@ const Villas = () => {
 
   return (
     <div>
-      <h2>Villa Listings</h2>
+    <Navbar/>
       <div className="filters">
         <label>
           Filter by Price:
@@ -147,6 +156,12 @@ const Villas = () => {
         {filteredVillas.map((villa) => (
           <div key={villa.id} className="property-card">
             <img src={villa.image} alt={`Villa ${villa.id}`} />
+            <div className="banglow-details">
+              <h3>{`Banglow ${villa.id}`}</h3>
+              <p><strong>Price:</strong> ${villa.price}</p>
+              <p><strong>Type:</strong> {villa.type}</p>
+              <p><strong>Description:</strong> {villa.description}</p>
+            </div>
             <button onClick={() => handleLike(villa.id)}>
               {villa.liked ? 'Unlike' : 'Like'}
             </button>
@@ -156,6 +171,7 @@ const Villas = () => {
           </div>
         ))}
       </div>
+      <Link to='/Cabin'> <button className='villabutton'>Go To Cabin</button></Link>
       {/* Pass likedVillas state and setLikedVillas function as props to Like component */}
       <Like likedItems={likedVillas} />
     </div>

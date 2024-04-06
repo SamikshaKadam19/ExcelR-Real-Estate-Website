@@ -20,6 +20,7 @@ const Signup = ({ handleSignup }) => {
       <div class="SignupContainer">
         <div class="firstpart">
         <p class="heading">Register</p>
+        <hr></hr><br></br>
         <form onSubmit={handleSubmit}>
           Name:<br></br>
           <input type="text" id="input"></input>

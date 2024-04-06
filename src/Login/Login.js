@@ -19,6 +19,7 @@ const Login = ({ handleLogin }) => {
       <div class="LoginContainer">
         <div class="firstpart">
         <h2 class="heading">Login</h2>
+        <hr></hr><br></br>
         <form onSubmit={handleSubmit}>
           Email:<input
             type="email"
@@ -37,7 +38,9 @@ const Login = ({ handleLogin }) => {
           <button type="submit" id="submitbutton">Login</button>
         </form>
         </div>
-        <div></div>
+        <div>
+        <img src="https://images.pexels.com/photos/186077/pexels-photo-186077.jpeg?auto=compress&cs=tinysrgb&w=600" alt="side iamge" id="secondpartimage"></img>
+        </div>
       
       </div>
     </div>
