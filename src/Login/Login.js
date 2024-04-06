@@ -1,16 +1,23 @@
-import React, { useState } from 'react';
 import Navbar from '../Navbar/Navbar';
 import './Login.css';
+
+import React, { useState } from 'react';
+import userService from './user-service-login'; 
 
 const Login = ({ handleLogin }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // You can add your authentication logic here
-    handleLogin(email, password);
+    
+    try {
+      const userData = await userService.Login(email, password);
+      console.log("Login Success:", userData);
+    } catch (error) {
+      console.error("Login Error:", error);
+    }
   };
+
 
   return (
     <div>
