@@ -8,7 +8,9 @@ import SignUp from './SignUp/Signup';
 import Appartment from './Apartment/Apartment';
 import Banglow from './Banglow/Banglow';
 import Cabin from './Cabin/Cabin';
-import Villas from './Villas/Villas'
+import Villas from './Villas/Villas';
+import Forgotpass from './Login/Forgotpass';
+import Wishlist from './Wishlist/Wishlist';
 
 const router = createBrowserRouter([
   {
@@ -41,6 +43,14 @@ const router = createBrowserRouter([
   {
     path:'/Villas',
     element:<Villas/>
+  },
+  {
+     path:'/Forgotpass',
+     element:<Forgotpass/>
+  },
+  {
+     path:'/Wishlist',
+     element:<Wishlist/>
   }
 ])
 

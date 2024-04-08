@@ -2,28 +2,29 @@
     display: flex;
     justify-content: space-around;
  }
- .firstpart{
-     margin-top: 40px;
-     width: 330px;
+ .firstloginpart{
+     margin-top: 50px;
+     margin-left: 90px;
+     width: 400px;
      height: 400px;
      padding: 20px;
-     /* box-shadow: 0px 0.5px 1px 1px rgb(201, 200, 200); */
+     box-shadow: 0px 1px 2px 1px rgb(101, 100, 100);
      border-radius: 10px;
  }
  #input{
     padding: 5px;
     width: 300px;
     border: none;
-    border-radius: 5px;
+    /* border-radius: 5px; */
     margin-top: 3px;
-    box-shadow: 0px 0.5px 1px 1px rgb(201, 200, 200);
+    box-shadow: 0px 1px 0px 0px rgb(201, 200, 200);
  }
  .heading{
      text-align: center;
      font-size: 30px;
  }
- #submitbutton{
-     margin-left: 160px;
+ #submitloginbutton{
+     margin-left: 140px;
      padding: 5px;
      font-size: 17px;
      border-radius: 5px;
@@ -33,5 +34,10 @@
  #secondpartimage{
     width: 900px;
     margin-left: 180px;
+    height: 100%;
 
+}
+.passwordsetup{
+    display: flex;
+    justify-content:space-between;
 }

@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import '../Filter/Filter.css'; // Import the CSS file for styling
+import '../Filter/Filter.css'; 
 
 const PropertyFilter = ({ cities, onSearch }) => {
   const [city, setCity] = useState('');
   const [budgetRange, setBudgetRange] = useState('');
   const [propertyType, setPropertyType] = useState('');
   const [roomType, setRoomType] = useState('');
-  const [properties, setProperties] = useState([]); // State to store fetched properties
+  const [properties, setProperties] = useState([]); 
 
   const handleSearch = () => {
     // Perform search based on filter criteria
@@ -60,7 +60,6 @@ const PropertyFilter = ({ cities, onSearch }) => {
         description: 'Modern Condo with Amenities',
         image: 'https://example.com/villa-image.jpg',
       },
-      // Add more property objects as needed
     ];
     setProperties(mockProperties);
   };

@@ -26,7 +26,7 @@ const Banglow = () => {
       image: Banglow1,
       liked: false,
       price: 200000,
-      type: '2BHK',
+      type: '1BHK',
       description: 'Cozy bungalow with two bedrooms, ideal for small families.'
     },
     {
@@ -42,7 +42,7 @@ const Banglow = () => {
       image: Banglow3,
       liked: false,
       price: 300000,
-      type: '3BHK',
+      type: '2BHK',
       description: 'Luxurious bungalow with three bedrooms, offering premium amenities.'
     },
     {
@@ -50,7 +50,7 @@ const Banglow = () => {
       image: Banglow4,
       liked: false,
       price: 300000,
-      type: '3BHK',
+      type: '1RK',
       description: 'Modern bungalow with three bedrooms, featuring contemporary design.'
     },
     {
@@ -58,7 +58,7 @@ const Banglow = () => {
       image: Banglow5,
       liked: false,
       price: 300000,
-      type: '3BHK',
+      type: '1BHK',
       description: 'Elegant bungalow with three bedrooms, showcasing sophistication.'
     },
     {
@@ -66,7 +66,7 @@ const Banglow = () => {
       image: Banglow6,
       liked: false,
       price: 300000,
-      type: '3BHK',
+      type: '2BHK',
       description: 'Rustic bungalow with three bedrooms, nestled amidst nature.'
     },
     {
@@ -82,7 +82,7 @@ const Banglow = () => {
       image: Banglow6,
       liked: false,
       price: 300000,
-      type: '3BHK',
+      type: '1BHK',
       description: 'Rustic bungalow with three bedrooms, nestled amidst nature.'
     },
     {
