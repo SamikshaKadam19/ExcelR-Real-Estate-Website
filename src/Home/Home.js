@@ -3,27 +3,23 @@ import './Home.css';
 import Navbar from '../Navbar/Navbar';
 import "flickity/css/flickity.css";
 import { Link } from 'react-router-dom';
-import Filter from '../Filter/Filter';
+import PropertyFilter from '../Filter/Filter';
 const Flickity = require('react-flickity-component');
 
 const flickityOptions = {
   initialIndex: 1
 }
 
-
-
 function Home() {
  
     const cities = ["City 1", "City 2", "City 3"];
   
     const handleSearch = (filters) => {
-      // Handle search based on filter criteria
       console.log("Search filters:", filters);
     };
   return (
     <>
-      <Navbar />
-
+      <Navbar/>
       <div class="listing">
         <div class="item">
           <Link to='/Banglow'>
@@ -102,7 +98,7 @@ function Home() {
         {/* <img style={{ marginLeft: 5, marginRight: 5 }} src={bestwishesimg} alt='bestwishes'></img> */}
       </Flickity>
 
-      <Filter cities={cities} onSearch={handleSearch} />
+      <PropertyFilter cities={cities} onSearch={handleSearch} />
     </>
 
   )
