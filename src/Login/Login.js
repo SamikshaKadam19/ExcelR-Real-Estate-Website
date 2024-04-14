@@ -28,15 +28,17 @@ const Login = ({ handleLogin }) => {
       <div className="wrapper">
         <div className="inner-warpper text-center">
         <h2 className='title'>Login</h2>
-          <form action="" id="formvalidate">
+          <form action="" id="formvalidate"  onSubmit={handleSubmit}>
 
             <div className="input-group">
-              <input className="form-control" name="userName" id="userName" type="text" placeholder="User Name" autoComplete="off" />
+              <input className="form-control" onChange = {(e)=> setEmail(e.target.value)} value = {email} name="userName" id="userName" type="text" placeholder="User Name" autoComplete="off" />
               <span className="lighting"></span>
             </div>
 
             <div className="input-group">
-              <input className="form-control" name="userPassword" id="userPassword" type="password" placeholder="Password" autoComplete="off" />
+              <input className="form-control" name="userPassword" id="userPassword" type="password" placeholder="Password" autoComplete="off"
+               onChange = {(e)=> setPassword(e.target.value)} value = {password} 
+               />
               <span className="lighting"></span>
             </div>
 
