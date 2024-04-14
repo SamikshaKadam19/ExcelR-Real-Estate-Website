@@ -7,7 +7,7 @@ import userService from './user-service-signup'; // Import the service
 
 const Signup = ({ handleSignup }) => {
   const [email, setEmail] = useState('');
-  const [username, SetUsername] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
   const handleSubmit = (e) => {
@@ -45,31 +45,20 @@ const Signup = ({ handleSignup }) => {
           <form action="" id="formvalidate">
             <div className="input-group">
 
-              <input className="form-control" name="userName" id="userName" type="text" placeholder="User Name" autoComplete="off" />
+              <input className="form-control" name="userName" id="userName" type="text" placeholder="User Name" value={username} onChange={(e)=>setUsername(e.target.value)} autoComplete="off" />
               <span className="lighting"></span>
             </div>
             <div className="input-group">
 
-              <input className="form-control" name="userPassword" id="userPassword" type="password" placeholder="Password" autoComplete="off" />
-              <span className="lighting"></span>
-            </div>
-
-            <div className="input-group">
-
-              <input className="form-control" name="userPassword" id="confirmPassword" type="password" placeholder="Confirm Password" autoComplete="off" />
+              <input className="form-control" name="userPassword" id="userPassword" type="password" placeholder="Password"  value={password} onChange={(e)=>setPassword(e.target.value)} autoComplete="off" />
               <span className="lighting"></span>
             </div>
 
             <div className="input-group">
 
-              <input className="form-control" name="number" id="number" type="text" placeholder="Mobile number" autoComplete="off" />
+              <input className="form-control" name="email" id="email" type="email" placeholder="email"  value={email} onChange={(e)=>setEmail(e.target.value)} autoComplete="off" />
               <span className="lighting"></span>
 
-            </div>
-            <div className="input-group">
-
-              <input className="form-control" name="email" id="email" type="text" placeholder="Email" autoComplete="off" />
-              <span className="lighting"></span>
             </div>
 
             <button type="submit" id="Signup">Signup</button>
