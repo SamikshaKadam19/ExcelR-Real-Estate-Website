@@ -42,7 +42,7 @@ const Signup = ({ handleSignup }) => {
       <div className="wrapper">
         <div className="inner-warpper text-center">
           <h2 className="title">Signup</h2>
-          <form action="" id="formvalidate">
+          <form id="formvalidate" onSubmit={handleSubmit}>
             <div className="input-group">
 
               <input className="form-control" name="userName" id="userName" type="text" placeholder="User Name" value={username} onChange={(e)=>setUsername(e.target.value)} autoComplete="off" />
