@@ -24,7 +24,6 @@ const Login = ({ handleLogin }) => {
     
     <>
     <Navbar/>
-    {/* sourav */}
       
       <div className="wrapper">
         <div className="inner-warpper text-center">
