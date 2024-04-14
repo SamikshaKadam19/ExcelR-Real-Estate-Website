@@ -34,7 +34,8 @@ const Navbar = () => {
         <NavLink className="nav-item" to="/login">Login</NavLink>
         <NavLink className="nav-item" to="/signup">Register</NavLink>
         {/* Add NavLink for Dashboard */}
-        <NavLink className="nav-item" to="/dashboard">Dashboard</NavLink>
+        <NavLink className="nav-item" to="/dashboard">User-Dashboard</NavLink>
+        <NavLink className="nav-item" to="/broker-dashboard">Broker-Dashboard</NavLink>
       </div>
       <div className="dropdown">
         <button className="dropbtn" onClick={toggleDropdown}>

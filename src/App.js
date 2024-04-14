@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom'; // Import BrowserRouter and Route
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Login from './Login';
 import Signup from './Signup';
 import Navbar from './Navbar/Navbar';
@@ -10,30 +10,29 @@ import Apartment from './Apartment/Apartment';
 import Villas from './Villas/Villas';
 import Like from './LikedPage/Like';
 import Filter from './Filter/Filter';
-import UserDashboard from './UserDashboard/UserDashboard'; // Import UserDashboard compone
-import Hero from './Components/Hero'
+import UserDashboard from './UserDashboard/UserDashboard';
+import BrokerDashboard from './BrokerDashboard/Brokerdashboard'; // Import BrokerDashboard component
+import Hero from './Components/Hero';
+
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const handleLogin = (email, password) => {
-    // Add your authentication logic here
     console.log('Logging in with:', email, password);
     setIsLoggedIn(true);
   };
 
   const handleSignup = (email, password) => {
-    // Add your signup logic here
     console.log('Signing up with:', email, password);
     setIsLoggedIn(true);
   };
 
   const handleSearch = (filters) => {
-    // Handle search logic here
     console.log('Search filters:', filters);
   };
 
   return (
-    <Router> {/* Wrap your components with BrowserRouter */}
+    <Router>
       <>
         <Filter onSearch={handleSearch} />
         <div>
@@ -43,7 +42,6 @@ const App = () => {
             </>
           ) : (
             <div>
-              {/* If user is not logged in, render Login and Signup */}
               <Login handleLogin={handleLogin} />
               <Signup handleSignup={handleSignup} />
             </div>
@@ -57,22 +55,9 @@ const App = () => {
         <Route path="/villas" component={Villas} />
         <Route path="/like" component={Like} />
         <Route path="/dashboard" component={UserDashboard} />
+        <Route path="/broker-dashboard" component={BrokerDashboard} /> {/* Route for BrokerDashboard */}
       </>
     </Router>
-      )}
-    </div>
-    <Hero/>
-    <Navbar/>
-    <Home/>
-    <Login/>
-    <Signup/>
-    <Apartment/>
-    <Banglow/>
-    <Cabin/>
-    <Villas/>
-    <Like/>
-    
-    </>
   );
 };
 
