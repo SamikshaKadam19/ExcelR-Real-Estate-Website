@@ -32,104 +32,54 @@ const Signup = ({ handleSignup }) => {
 
 
   return (
-    <div>
-      <Navbar />
-      <div class="SignupContainer">
-        <div class="firstpart">
-          <p class="heading">Register</p>
-          <hr></hr><br></br>
-          <form onSubmit={handleSubmit}>
-            Name:<br></br>
-            <input type="text" id="input" placeholder='Name'></input>
-            <br></br><br></br>
-            Email:<br></br>
-            <input
-              type="email"
-              placeholder="Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-              id="input" /><br></br><br></br>
-            Password: <br></br>
-            <input
-              type="password"
-              placeholder="Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required id="input"
-            /><br></br><br></br>
-            Confirm Password: <br></br>
-            <input
-              type="password"
-              placeholder="Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required id="input"
-            /><br></br><br></br>
-            Role:
-            <div class="domain">
-              <div className="radio">
-                <label>
-                  <input type="radio" value="Broker" />
-                  Broker
-                </label>
-              </div>
-              <div className="radio">
-                <label>
-                  <input type="radio" value="client" />
-                  client
-                </label>
-              </div>
-            </div><br></br>
-            <button type="submit" id="submitbutton">Register</button>
-            <p class="account">Already have an account? <Link class="clickhere" to="/Login">Click here</Link></p>
-          </form>
-          </div>
-        <p class="heading">Register</p>
-        <hr></hr><br></br>
-        <form onSubmit={handleSubmit}>
-          Email:<br></br>
-          <input
-            type="email"
-            placeholder="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-           id="input"/><br></br><br></br>
-           Username:<br></br>
-          <input
-            type="username"
-            placeholder="Username"
-            value={username}
-            onChange={(e) => SetUsername(e.target.value)}
-            required
-           id="input"/><br></br><br></br>
-          Password: <br></br>
-          <input
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required id="input"
-          /><br></br><br></br>
-          Confirm Password: <br></br>
-          <input
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required id="input"
-          /><br></br><br></br>
-<br></br><br></br>
-          <button type="submit" id="submitbutton">Register</button>
-        </form>
-        </div>
-        <div>
-          <img src="https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=600" alt="side iamge" id="secondpartimage"></img>
-        </div>
+    
+    <>
+        <Navbar/>
 
+
+      <div className="start text-center">
       </div>
-    </div>
+      <div className="wrapper">
+        <div className="inner-warpper text-center">
+          <h2 className="title">Signup</h2>
+          <form action="" id="formvalidate">
+            <div className="input-group">
+
+              <input className="form-control" name="userName" id="userName" type="text" placeholder="User Name" autoComplete="off" />
+              <span className="lighting"></span>
+            </div>
+            <div className="input-group">
+
+              <input className="form-control" name="userPassword" id="userPassword" type="password" placeholder="Password" autoComplete="off" />
+              <span className="lighting"></span>
+            </div>
+
+            <div className="input-group">
+
+              <input className="form-control" name="userPassword" id="confirmPassword" type="password" placeholder="Confirm Password" autoComplete="off" />
+              <span className="lighting"></span>
+            </div>
+
+            <div className="input-group">
+
+              <input className="form-control" name="number" id="number" type="text" placeholder="Mobile number" autoComplete="off" />
+              <span className="lighting"></span>
+
+            </div>
+            <div className="input-group">
+
+              <input className="form-control" name="email" id="email" type="text" placeholder="Email" autoComplete="off" />
+              <span className="lighting"></span>
+            </div>
+
+            <button type="submit" id="Signup">Signup</button>
+          </form>
+        </div>
+        <div className="signup-wrapper text-center">
+          <Link to="/Login">Already have an accout? <span className="text-primary">Login</span></Link>
+        </div>
+      </div>
+    </>
   );
 };
 
