@@ -1,0 +1,39 @@
+.property-form-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+  }
+  
+  .property-form-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .property-form-container form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .property-form-container input[type="text"] {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .property-form-container button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .property-form-container button:hover {
+    background-color: #0056b3;
+  }
+  

@@ -13,7 +13,7 @@ const Wishlist = () => {
 
   return (
     <div>
-        <Navbar/>
+ 
       <h1>Wishlist</h1>
       {likedProperties.length === 0 ? (
         <p>Your wishlist is empty.</p>

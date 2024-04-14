@@ -11,6 +11,8 @@ import Villas from './Villas/Villas';
 import Forgotpass from './Login/Forgotpass';
 import Wishlist from './Wishlist/Wishlist';
 import Hero from './Components/Hero';
+import UserDashboard from './UserDashboard/UserDashboard';
+import BrokerDashboard from './BrokerDashboard/Brokerdashboard';
 
 const router = createBrowserRouter([
   {
@@ -51,7 +53,15 @@ const router = createBrowserRouter([
   {
      path:'/Wishlist',
      element:<Wishlist/>
-  }
+  },
+  {
+    path:'/dashboard',
+    element:<UserDashboard/>
+ },
+ {
+  path:'/broker-dashboard',
+  element:<BrokerDashboard/>
+}
 ])
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

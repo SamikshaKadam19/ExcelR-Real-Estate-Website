@@ -1,16 +1,63 @@
+/* UserDashboard.css */
+
 .user-dashboard-container {
-    padding: 20px;
-    background-color: #f7f7f7;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  background-color: #f7f7f7;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
+  margin: 20px auto;
+}
+
+h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.dashboard-options {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.dashboard-option {
+  background-color: #fff;
+  border: none;
+  border-radius: 8px 8px 0 0;
+  cursor: pointer;
+  flex: 1;
+  padding: 10px;
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+
+.dashboard-option.active {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.dashboard-option:not(:last-child) {
+  margin-right: 5px;
+}
+
+.dashboard-option:hover {
+  background-color: #f0f0f0;
+}
+
+.user-info {
+  margin-top: 20px;
+}
+
+.info-label {
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+@media (max-width: 768px) {
+  .user-dashboard-container {
+    padding: 10px;
   }
-  
-  .user-info, .wishlist {
-    margin-bottom: 20px;
+
+  h1 {
+    font-size: 20px;
   }
-  
-  .info-label {
-    font-weight: bold;
-    margin-right: 5px;
-  }
-  
+}
