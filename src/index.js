@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-import Home from './Home/Home';
 import Login from './Login/Login';
 import SignUp from './SignUp/Signup';
 import Appartment from './Apartment/Apartment';
@@ -11,12 +10,13 @@ import Cabin from './Cabin/Cabin';
 import Villas from './Villas/Villas';
 import Forgotpass from './Login/Forgotpass';
 import Wishlist from './Wishlist/Wishlist';
+import Hero from './Components/Hero';
 
 const router = createBrowserRouter([
   {
-      path:'/',
-      element:<Home/>
-  },
+    path:'/',
+    element:<Hero/>
+},
   {
       path:'/Login',
       element:<Login/>

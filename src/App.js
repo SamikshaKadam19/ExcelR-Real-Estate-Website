@@ -10,7 +10,7 @@ import Apartment from './Apartment/Apartment';
 import Villas from './Villas/Villas';
 import Like from './LikedPage/Like';
 import Filter from './Filter/Filter';
-
+import Hero from './Components/Hero'
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
@@ -43,6 +43,7 @@ const App = () => {
         </div>
       )}
     </div>
+    <Hero/>
     <Navbar/>
     <Home/>
     <Login/>
