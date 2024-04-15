@@ -1,7 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import '../UserDashboard/UserDashboard.css'; // Import CSS file for styling
-import Navbar from '../Navbar/Navbar';
 import Wishlist from '../Wishlist/Wishlist'; // Import Wishlist component
 
 const UserDashboard = () => {
@@ -62,7 +61,6 @@ const UserDashboard = () => {
 
   return (
     <div>
-      <Navbar />
       <div className="user-dashboard-container">
         <div className="sidebar">
           <div className="sidebar-header">

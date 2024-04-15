@@ -14,6 +14,7 @@ import Hero from './Components/Hero';
 import UserDashboard from './UserDashboard/UserDashboard';
 import BrokerDashboard from './BrokerDashboard/Brokerdashboard';
 import Home from './Home/Home';
+import LoginBroker from './Login/LoginBroker';
 
 const router = createBrowserRouter([
   {
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
       path:'/SignUp',
       element:<SignUp/>
   },
+  {
+    path:'/LoginBroker',
+    element:<LoginBroker/>
+},
   {
     path:'/Appartment',
     element:<Appartment/>
