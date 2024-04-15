@@ -23,8 +23,8 @@ const Login = ({ handleLogin }) => {
 
   return (
     <>
+ 
       <Navbar/>
-      
       <div className="wrapper">
         <div className="inner-warpper text-center">
           <h2 className='title'>Login</h2>
