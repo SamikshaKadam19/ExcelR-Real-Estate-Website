@@ -1,31 +1,33 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import FeaturedPlayListIcon from "@mui/icons-material/FeaturedPlayList";
-import MiscellaneousServicesIcon from "@mui/icons-material/MiscellaneousServices";
-import ListAltIcon from "@mui/icons-material/ListAlt";
-import HomeIcon from "@mui/icons-material/Home";
-import ContactsIcon from "@mui/icons-material/Contacts";
 import { Container, Popover, Button } from "@mui/material";
-import CustomButton from "./CustomButton";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
 const Title = Typography;
 
 export const Navbar = () => {
-  const [anchorEl, setAnchorEl] = useState(null);
+  const [signupAnchorEl, setSignupAnchorEl] = useState(null);
+  const [loginAnchorEl, setLoginAnchorEl] = useState(null);
 
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
+  const handleSignupClick = (event) => {
+    setSignupAnchorEl(event.currentTarget);
+  };
+
+  const handleLoginClick = (event) => {
+    setLoginAnchorEl(event.currentTarget);
   };
 
   const handleClose = () => {
-    setAnchorEl(null);
+    setSignupAnchorEl(null);
+    setLoginAnchorEl(null);
   };
 
-  const open = Boolean(anchorEl);
-  const id = open ? 'simple-popover' : undefined;
+  const signupOpen = Boolean(signupAnchorEl);
+  const loginOpen = Boolean(loginAnchorEl);
+  const signupId = signupOpen ? 'signup-popover' : undefined;
+  const loginId = loginOpen ? 'login-popover' : undefined;
 
   return (
     <Container>
@@ -39,9 +41,9 @@ export const Navbar = () => {
       >
         <Box sx={{ display: "flex", alignItems: "center" }}>
           <Popover
-            id={id}
-            open={open}
-            anchorEl={anchorEl}
+            id={signupId}
+            open={signupOpen}
+            anchorEl={signupAnchorEl}
             onClose={handleClose}
             anchorOrigin={{
               vertical: 'bottom',
@@ -53,18 +55,41 @@ export const Navbar = () => {
             }}
           >
             <Box sx={{ p: 2 }}>
-            <Link to="/Signup" style={{ textDecoration: 'none' }}>
-              <Typography>User</Typography>
-            </Link>
+              <Link to="/Signup" style={{ textDecoration: 'none' }}>
+                <Typography>User</Typography>
+              </Link>
 
-            <Link to="/Signup" style={{ textDecoration: 'none' }}>
-              <Typography>Broker/Agent</Typography>
-            </Link>
+              <Link to="/Signup" style={{ textDecoration: 'none' }}>
+                <Typography>Broker/Agent</Typography>
+              </Link>
+            </Box>
+          </Popover>
+          <Popover
+            id={loginId}
+            open={loginOpen}
+            anchorEl={loginAnchorEl}
+            onClose={handleClose}
+            anchorOrigin={{
+              vertical: 'bottom',
+              horizontal: 'center',
+            }}
+            transformOrigin={{
+              vertical: 'top',
+              horizontal: 'center',
+            }}
+          >
+            <Box sx={{ p: 2 }}>
+              <Link to="/Login" style={{ textDecoration: 'none' }}>
+                <Typography>User</Typography>
+              </Link>
+
+              <Link to="/Login" style={{ textDecoration: 'none' }}>
+                <Typography>Broker/Agent</Typography>
+              </Link>
             </Box>
           </Popover>
           <Title>realEstate.</Title>
-          </Box>
-
+        </Box>
 
         <Box
           sx={{
@@ -77,22 +102,20 @@ export const Navbar = () => {
             
           <div>
             <Button
-              aria-describedby={id}
+              aria-describedby={signupId}
               variant="contained"
-              onClick={handleClick}
-
+              onClick={handleSignupClick}
               style={{ backgroundColor: "#0F1B4C", color: "#fff" }}
             >
               Sign Up
             </Button>
           </div>
 
-
           <div>
             <Button
-              aria-describedby={id}
+              aria-describedby={loginId}
               variant="contained"
-              onClick={handleClick}
+              onClick={handleLoginClick}
               style={{ backgroundColor: "#0F1B4C", color: "#fff" }}
             >
               Login
