@@ -8,6 +8,8 @@ import userService from './user-service-login';
 const Login = ({ handleLogin }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [userRole, setUserRole] = useState('user'); // Default to 'user' role
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     
@@ -19,43 +21,32 @@ const Login = ({ handleLogin }) => {
     }
   };
 
-
   return (
-    
     <>
+      <Navbar/>
       
       <div className="wrapper">
         <div className="inner-warpper text-center">
-        <h2 className='title'>Login</h2>
+          <h2 className='title'>Login</h2>
           <form action="" id="formvalidate"  onSubmit={handleSubmit}>
-
             <div className="input-group">
-              <input className="form-control" onChange = {(e)=> setEmail(e.target.value)} value = {email} name="userName" id="userName" type="text" placeholder="User Name" autoComplete="off" />
+              <input className="form-control" onChange={(e) => setEmail(e.target.value)} value={email} name="userName" id="userName" type="text" placeholder="User Name" autoComplete="off" />
               <span className="lighting"></span>
             </div>
-
             <div className="input-group">
-              <input className="form-control" name="userPassword" id="userPassword" type="password" placeholder="Password" autoComplete="off"
-               onChange = {(e)=> setPassword(e.target.value)} value = {password} 
-               />
+              <input className="form-control" name="userPassword" id="userPassword" type="password" placeholder="Password" autoComplete="off" onChange={(e) => setPassword(e.target.value)} value={password} />
               <span className="lighting"></span>
             </div>
-
             <button type="submit" id="login">Login</button>
             <div className="clearfix supporter">
-              
               <Link className="forgot pull-right" to="/">Forgot Password?</Link>
             </div>
-            
           </form>
         </div>
         <div className="signup-wrapper text-center">
           <Link to="/Signup">Don't have an accout? <span className="text-primary">Create One</span></Link>
         </div>
       </div>
-
-
-
     </>
   );
 };

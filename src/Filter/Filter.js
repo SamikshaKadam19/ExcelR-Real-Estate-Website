@@ -1,16 +1,22 @@
-import React, { useState } from 'react';
-import '../Filter/Filter.css'; 
+import React, { useState, useEffect } from 'react';
+import '../Filter/Filter.css'; // Import the CSS file for styling
 
 const PropertyFilter = ({ cities, onSearch }) => {
   const [city, setCity] = useState('');
-  const [budgetRange, setBudgetRange] = useState('');
+  const [minBudget, setMinBudget] = useState('');
+  const [maxBudget, setMaxBudget] = useState('');
   const [propertyType, setPropertyType] = useState('');
   const [roomType, setRoomType] = useState('');
-  const [properties, setProperties] = useState([]); 
+  const [properties, setProperties] = useState([]); // State to store fetched properties
+
+  useEffect(() => {
+    // Reset maxBudget whenever minBudget changes
+    setMaxBudget('');
+  }, [minBudget]);
 
   const handleSearch = () => {
     // Perform search based on filter criteria
-    const searchData = { city, budgetRange, propertyType, roomType };
+    const searchData = { city, minBudget, maxBudget, propertyType, roomType };
     fetchProperties(searchData);
   };
 
@@ -19,53 +25,77 @@ const PropertyFilter = ({ cities, onSearch }) => {
     const mockProperties = [
       {
         id: 1,
-        title: 'Beautiful Apartment',
-        description: 'Cozy Apartment near Downtown',
-        image: 'https://example.com/apartment-image.jpg',
+        title: 'Beautiful Apartment 1',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+        image: 'https://example.com/apartment-image1.jpg',
+        type: 'apartment'
       },
       {
         id: 2,
-        title: 'Apartment',
-        description: 'Spacious Apartment in Suburbia',
-        image: 'https://example.com/villa-image.jpg',
+        title: 'Luxurious Villa 1',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+        image: 'https://example.com/villa-image1.jpg',
+        type: 'villa'
       },
       {
-        id: 2,
-        title: 'Bunglow',
-        description: 'Cozy bungalow with two bedrooms, ideal for small families.',
-        image: 'https://example.com/villa-image.jpg',
+        id: 3,
+        title: 'Modern Bungalow 1',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+        image: 'https://example.com/bungalow-image1.jpg',
+        type: 'bungalow'
       },
       {
-        id: 2,
-        title: 'Apartment',
-        description: 'Rustic cabins made of wood, perfect for a cozy retreat in nature.',
-        image: 'https://example.com/villa-image.jpg',
+        id: 4,
+        title: 'Beautiful Apartment 2',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+        image: 'https://example.com/apartment-image2.jpg',
+        type: 'apartment'
       },
       {
-        id: 2,
-        title: 'Bunglow',
-        description: 'Traditional log cabins with modern amenities, offering a blend of comfort and nature.',
-        image: 'https://example.com/villa-image.jpg',
+        id: 5,
+        title: 'Luxurious Villa 2',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+        image: 'https://example.com/villa-image2.jpg',
+        type: 'villa'
       },
       {
-        id: 2,
-        title: 'Villa',
-        description: 'Charming Loft in the City',
-        location: '1011 Pine Lane',
-        image: 'https://example.com/villa-image.jpg',
+        id: 6,
+        title: 'Modern Bungalow 2',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+        image: 'https://example.com/bungalow-image2.jpg',
+        type: 'bungalow'
       },
       {
-        id: 2,
-        title: 'Appartment',
-        description: 'Modern Condo with Amenities',
-        image: 'https://example.com/villa-image.jpg',
+        id: 7,
+        title: 'Beautiful Apartment 3',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+        image: 'https://example.com/apartment-image3.jpg',
+        type: 'apartment'
       },
+      {
+        id: 8,
+        title: 'Luxurious Villa 3',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+        image: 'https://example.com/villa-image3.jpg',
+        type: 'villa'
+      },
+      {
+        id: 9,
+        title: 'Modern Bungalow 3',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+        image: 'https://example.com/bungalow-image3.jpg',
+        type: 'bungalow'
+      },
+      // Add more property objects as needed
     ];
     setProperties(mockProperties);
   };
 
   const renderProperties = () => {
-    return properties.map(property => (
+    // Filter properties based on property type
+    const filteredProperties = properties.filter(property => property.type === propertyType);
+
+    return filteredProperties.map(property => (
       <div key={property.id} className="property-card">
         <img src={property.image} alt={property.title} className="property-image" />
         <div className="property-info">
@@ -88,18 +118,35 @@ const PropertyFilter = ({ cities, onSearch }) => {
           className="input-field"
         />
 
+        <label htmlFor="minBudget">Minimum Budget:</label>
         <select
-          value={budgetRange}
-          onChange={e => setBudgetRange(e.target.value)}
+          id="minBudget"
+          name="minBudget"
+          value={minBudget}
+          onChange={e => setMinBudget(e.target.value)}
           className="select-field"
         >
-          <option value="">Select Budget Range</option>
-          <option value="0-5000">$0 - $5,000</option>
-          <option value="5000-10000">$5,000 - $10,000</option>
-          <option value="10000-20000">$10,000 - $20,000</option>
-          <option value="20000-50000">$20,000 - $50,000</option>
-          <option value="50000-100000">$50,000 - $100,000</option>
-          <option value="100000+">$100,000+</option>
+          <option value="">Select Minimum</option>
+          <option value="0">₹0</option>
+          <option value="415000">₹4,15,000</option>
+          <option value="830000">₹8,30,000</option>
+          <option value="1660000">₹16,60,000</option>
+          <option value="4150000">₹41,50,000</option>
+        </select>
+
+        <label htmlFor="maxBudget">Maximum Budget:</label>
+        <select
+          id="maxBudget"
+          name="maxBudget"
+          value={maxBudget}
+          onChange={e => setMaxBudget(e.target.value)}
+          className="select-field"
+        >
+          <option value="">Select Maximum</option>
+          <option value="415000">₹4,15,000</option>
+          <option value="830000">₹8,30,000</option>
+          <option value="1660000">₹16,60,000</option>
+          <option value="4150000">₹41,50,000</option>
         </select>
 
         <select

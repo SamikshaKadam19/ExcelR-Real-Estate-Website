@@ -1,75 +1,74 @@
 .property-filter-container {
-    margin: 20px 0;
-  }
-  
-  .property-filter {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    background-color: #f4f4f4;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .input-field {
-    width: 200px;
-    height: 25px;
-    margin: 10px;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    background-color: #fff;
-    font-size: 16px;
-    transition: border-color 0.3s ease;
-  }
-  
-  .input-field:focus {
-    outline: none;
-    border-color: #5b9dd9;
-  }
-  
-  .budget-fields {
-    display: flex;
-  }
-  
-  .select-field {
-    width: 200px;
-    height: 40px;
-    margin: 10px;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    background-color: #fff;
-    font-size: 16px;
-  }
-  
-  .checkboxes {
-    margin: 10px;
-  }
-  
-  .checkboxes input[type="checkbox"] {
-    margin-right: 5px;
-  }
-  
-  .checkboxes label {
-    font-size: 16px;
-  }
-  
-  .search-button {
-    margin: 10px;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 6px;
-    background-color: #5b9dd9;
-    color: #fff;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .search-button:hover {
-    background-color: #478ac9;
-  }
-  
+  margin: 20px 0;
+}
+
+.property-filter {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background-color: #f4f4f4;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.input-field {
+  width: 200px;
+  height: 25px;
+  margin: 10px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: #fff;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: #5b9dd9;
+}
+
+.budget-fields {
+  display: flex;
+}
+
+.select-field {
+  width: 200px;
+  height: 40px;
+  margin: 10px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: #fff;
+  font-size: 16px;
+}
+
+.checkboxes {
+  margin: 10px;
+}
+
+.checkboxes input[type="checkbox"] {
+  margin-right: 5px;
+}
+
+.checkboxes label {
+  font-size: 16px;
+}
+
+.search-button {
+  margin: 10px;
+  padding: 10px 10px;
+  border: none;
+  border-radius: 6px;
+  background-color: #5b9dd9;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.search-button:hover {
+  background-color: #478ac9;
+}
