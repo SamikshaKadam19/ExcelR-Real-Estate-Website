@@ -1,6 +1,5 @@
 
 import { Link } from 'react-router-dom';
-import Navbar from '../Navbar/Navbar';
 import './Signup.css';
 import React, { useState } from 'react';
 import userService from './user-service-signup'; // Import the service
@@ -34,7 +33,6 @@ const Signup = ({ handleSignup }) => {
   return (
     
     <>
-        <Navbar/>
 
 
       <div className="start text-center">

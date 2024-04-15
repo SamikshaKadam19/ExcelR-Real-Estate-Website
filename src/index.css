@@ -19,7 +19,6 @@ code {
 body{
   font-family: 'Times New Roman', Times, serif;
   /*background: rgba(5 57 112 / 67%);*/
-  background: url("/src/img.jpg") no-repeat ;
   background-size: cover;
 
   

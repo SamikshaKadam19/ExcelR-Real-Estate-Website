@@ -1,4 +1,3 @@
-import Navbar from '../Navbar/Navbar';
 import './Login.css';
 import { Link } from 'react-router-dom';
 
@@ -23,7 +22,6 @@ const Login = ({ handleLogin }) => {
 
   return (
     <>
-      <Navbar/>
       
       <div className="wrapper">
         <div className="inner-warpper text-center">
