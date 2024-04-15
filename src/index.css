@@ -20,6 +20,8 @@ body{
   font-family: 'Times New Roman', Times, serif;
   /*background: rgba(5 57 112 / 67%);*/
   background-size: cover;
+  overflow: hidden; /* Hide scrollbars */
+
 
   
 }

@@ -1,178 +1,106 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import MenuIcon from "@mui/icons-material/Menu";
 import FeaturedPlayListIcon from "@mui/icons-material/FeaturedPlayList";
 import MiscellaneousServicesIcon from "@mui/icons-material/MiscellaneousServices";
 import ListAltIcon from "@mui/icons-material/ListAlt";
 import HomeIcon from "@mui/icons-material/Home";
 import ContactsIcon from "@mui/icons-material/Contacts";
-import logoImg from "../media/logo.png";
-import { Container } from "@mui/system";
+import { Container, Popover, Button } from "@mui/material";
 import CustomButton from "./CustomButton";
 import { Link } from "react-router-dom";
-
-import {
-  Drawer,
-  List,
-  ListItem,
-  ListItemButton,
-  ListItemIcon,
-  ListItemText,
-  styled,
-} from "@mui/material";
 import { useState } from "react";
-import { LinkOffTwoTone } from "@mui/icons-material";
+
+const Title = Typography;
 
 export const Navbar = () => {
-  const [mobileMenu, setMobileMenu] = useState({
-    left: false,
-  });
+  const [anchorEl, setAnchorEl] = useState(null);
 
-  const toggleDrawer = (anchor, open) => (event) => {
-    if (
-      event.type === "keydown" &&
-      (event.type === "Tab" || event.type === "Shift")
-    ) {
-      return;
-    }
-
-    setMobileMenu({ ...mobileMenu, [anchor]: open });
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
   };
 
-  const list = (anchor) => (
-    <Box
-      sx={{ width: anchor === "top" || anchor === "bottom" ? "auto" : 250 }}
-      role="presentation"
-      onClick={toggleDrawer(anchor, false)}
-      onKeyDown={toggleDrawer(anchor, false)}
-    >
-      <List>
-        {["Home", "Features", "Services", "Listed", "Contact"].map(
-          (text, index) => (
-            <ListItem key={text} disablePadding>
-              <ListItemButton>
-                <ListItemIcon>
-                  {index === 0 && <HomeIcon />}
-                  {index === 1 && <FeaturedPlayListIcon />}
-                  {index === 2 && <MiscellaneousServicesIcon />}
-                  {index === 3 && <ListAltIcon />}
-                  {index === 4 && <ContactsIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItemButton>
-            </ListItem>
-          )
-        )}
-      </List>
-    </Box>
-  );
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
 
-  const NavLink = styled(Typography)(({ theme }) => ({
-    fontSize: "14px",
-    color: "#4F5361",
-    fontWeight: "bold",
-    width: "8rem",
-    cursor: "pointer",
-    "&:hover": {
-      color: "#fff",
-    },
-  }));
-
-  const NavbarLinksBox = styled(Box)(({ theme }) => ({
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    gap: theme.spacing(3),
-    [theme.breakpoints.down("md")]: {
-      display: "none",
-    },
-  }));
-
-  const CustomMenuIcon = styled(MenuIcon)(({ theme }) => ({
-    cursor: "pointer",
-    display: "none",
-    marginRight: theme.spacing(2),
-    [theme.breakpoints.down("md")]: {
-      display: "block",
-    },
-  }));
-
-  const NavbarContainer = styled(Container)(({ theme }) => ({
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "space-between",
-    padding: theme.spacing(5),
-    [theme.breakpoints.down("md")]: {
-      padding: theme.spacing(2),
-    },
-  }));
-
-  const NavbarLogo = styled("img")(({ theme }) => ({
-    cursor: "pointer",
-    [theme.breakpoints.down("md")]: {
-      display: "none",
-    },
-  }));
+  const open = Boolean(anchorEl);
+  const id = open ? 'simple-popover' : undefined;
 
   return (
-    <NavbarContainer>
+    <Container>
       <Box
         sx={{
           display: "flex",
           alignItems: "center",
-          justifyContent: "center",
+          justifyContent: "space-between",
           gap: "2.5rem",
         }}
       >
         <Box sx={{ display: "flex", alignItems: "center" }}>
-          <CustomMenuIcon onClick={toggleDrawer("left", true)} />
-          <Drawer
-            anchor="left"
-            open={mobileMenu["left"]}
-            onClose={toggleDrawer("left", false)}
+          <Popover
+            id={id}
+            open={open}
+            anchorEl={anchorEl}
+            onClose={handleClose}
+            anchorOrigin={{
+              vertical: 'bottom',
+              horizontal: 'center',
+            }}
+            transformOrigin={{
+              vertical: 'top',
+              horizontal: 'center',
+            }}
           >
-            {list("left")}
-          </Drawer>
-          <NavbarLogo src={logoImg} alt="logo" />
+            <Box sx={{ p: 2 }}>
+            <Link to="/Signup" style={{ textDecoration: 'none' }}>
+              <Typography>User</Typography>
+            </Link>
+
+            <Link to="/Signup" style={{ textDecoration: 'none' }}>
+              <Typography>Broker/Agent</Typography>
+            </Link>
+            </Box>
+          </Popover>
+          <Title>realEstate.</Title>
+          </Box>
+
+
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: "1rem",
+          }}
+        >
+            
+          <div>
+            <Button
+              aria-describedby={id}
+              variant="contained"
+              onClick={handleClick}
+
+              style={{ backgroundColor: "#0F1B4C", color: "#fff" }}
+            >
+              Sign Up
+            </Button>
+          </div>
+
+
+          <div>
+            <Button
+              aria-describedby={id}
+              variant="contained"
+              onClick={handleClick}
+              style={{ backgroundColor: "#0F1B4C", color: "#fff" }}
+            >
+              Login
+            </Button>
+          </div>
         </Box>
-
-        <NavbarLinksBox>
-          
-          <NavLink variant="body2" to="/Home">Home</NavLink>
-          
-          <NavLink variant="body2" to="/Home">Features</NavLink>
-          
-          <NavLink variant="body2" to="/Home">Services</NavLink>
-          
-          <NavLink variant="body2" to="/Home">Listed</NavLink>
-          
-          <NavLink variant="body2" to="/Home">Contact</NavLink>
-          
-        </NavbarLinksBox>
       </Box>
-
-      <Box
-        sx={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          gap: "1rem",
-        }}
-      >  <Link to="/Signup">
-        <NavLink variant="body2" to="/Signup" > Sign Up</NavLink>
-        </Link>
-        
-        <Link to="/Login">
-        <CustomButton
-          backgroundColor="#0F1B4C"
-          color="#fff"
-          buttonText="Register"
-        />
-          </Link>
-
-      </Box>
-    </NavbarContainer>
+    </Container>
   );
 };
 
