@@ -1,6 +1,5 @@
 import React from 'react';
 import './Home.css';
-import Navbar from '../Navbar/Navbar';
 import "flickity/css/flickity.css";
 import { Link } from 'react-router-dom';
 import PropertyFilter from '../Filter/Filter';
@@ -19,7 +18,11 @@ function Home() {
     };
   return (
     <>
-      <Navbar/>
+    <div id='userDashboard'>
+        <Link to="/dashboard">
+        <button>USER DASHBOARD</button>
+        </Link>
+      </div>
       <div class="listing">
         <div class="item">
           <Link to='/Banglow'>
@@ -45,37 +48,8 @@ function Home() {
             <p>Villas Home</p>
           </Link>
         </div>
-        <div class="item">
-
-          <img src="https://cdn-icons-png.flaticon.com/128/1018/1018573.png" alt="entire home" id="iteming"></img>
-          <p>Entire Home</p>
-        </div>
-        <div class="item">
-
-          <img src="https://cdn-icons-png.flaticon.com/128/2706/2706094.png" alt="beach front" id="iteming"></img>
-          <p>Beach Front</p>
-
-        </div>
-        <div class="item">
-
-          <img src="https://cdn-icons-png.flaticon.com/128/6265/6265974.png" alt="with pool" id="iteming"></img>
-          <p>Pool Side</p>
-
-        </div>
-        <div class="item">
-
-          <img src="https://cdn-icons-png.flaticon.com/128/4358/4358423.png" alt="with pool" id="iteming"></img>
-          <p>Event Suitable</p>
-
-        </div>
-
-        <div class="item">
-
-          <img src="https://cdn-icons-png.flaticon.com/128/489/489874.png" alt="with pool" id="iteming"></img>
-          <p>Loft Rooms</p>
-
-        </div>
       </div>
+      
 
       <Flickity
         className={'carousel'}

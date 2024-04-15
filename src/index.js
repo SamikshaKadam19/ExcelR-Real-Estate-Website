@@ -13,11 +13,16 @@ import Wishlist from './Wishlist/Wishlist';
 import Hero from './Components/Hero';
 import UserDashboard from './UserDashboard/UserDashboard';
 import BrokerDashboard from './BrokerDashboard/Brokerdashboard';
+import Home from './Home/Home';
 
 const router = createBrowserRouter([
   {
     path:'/',
     element:<Hero/>
+},
+{
+  path:'/App',
+  element:<Home/>
 },
   {
       path:'/Login',
