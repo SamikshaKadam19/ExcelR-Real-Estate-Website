@@ -18,6 +18,7 @@ export const Navbar = () => {
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
+    console.log(event);
   };
 
   const handleClose = () => {
@@ -25,7 +26,8 @@ export const Navbar = () => {
   };
 
   const open = Boolean(anchorEl);
-  const id = open ? 'simple-popover' : undefined;
+  let id = open ? 'simple-popover' : undefined;
+   id = open ? 'simple-popover' : undefined;
 
   return (
     <Container>
@@ -37,33 +39,34 @@ export const Navbar = () => {
           gap: "2.5rem",
         }}
       >
-        <Box sx={{ display: "flex", alignItems: "center" }}>
-          <Popover
-            id={id}
-            open={open}
-            anchorEl={anchorEl}
-            onClose={handleClose}
-            anchorOrigin={{
-              vertical: 'bottom',
-              horizontal: 'center',
-            }}
-            transformOrigin={{
-              vertical: 'top',
-              horizontal: 'center',
-            }}
-          >
-            <Box sx={{ p: 2 }}>
-            <Link to="/Signup" style={{ textDecoration: 'none' }}>
-              <Typography>User</Typography>
-            </Link>
+      <Box sx={{ display: "flex", alignItems: "center" }}>
+        <Popover
+          id={id}
+          open={open}
+          anchorEl={anchorEl}
+          onClose={handleClose}
+          anchorOrigin={{
+            vertical: 'bottom',
+            horizontal: 'center',
+          }}
+          transformOrigin={{
+            vertical: 'top',
+            horizontal: 'center',
+          }}
+        >
+          <Box sx={{ p: 2 }}>
+          <Link to="/Signup" style={{ textDecoration: 'none' }}>
+            <Typography>User</Typography>
+          </Link>
 
-            <Link to="/Signup" style={{ textDecoration: 'none' }}>
-              <Typography>Broker/Agent</Typography>
-            </Link>
-            </Box>
-          </Popover>
-          <Title>realEstate.</Title>
+          <Link to="/Signup" style={{ textDecoration: 'none' }}>
+            <Typography>Broker/Agent</Typography>
+          </Link>
           </Box>
+        </Popover>
+        
+        <Title>realEstate.</Title>
+        </Box>
 
 
         <Box
