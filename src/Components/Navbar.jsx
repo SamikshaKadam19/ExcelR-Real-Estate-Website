@@ -11,8 +11,12 @@ export const Navbar = () => {
   const [signupAnchorEl, setSignupAnchorEl] = useState(null);
   const [loginAnchorEl, setLoginAnchorEl] = useState(null);
 
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
+  const handleSignupClick = (event) => {
+    setSignupAnchorEl(event.currentTarget);
+  };
+
+  const handleLoginClick = (event) => {
+    setLoginAnchorEl(event.currentTarget);
   };
 
   const handleClose = () => {
@@ -20,8 +24,10 @@ export const Navbar = () => {
     setLoginAnchorEl(null);
   };
 
-  const open = Boolean(anchorEl);
-  const id = open ? 'simple-popover' : undefined;
+  const signupOpen = Boolean(signupAnchorEl);
+  const loginOpen = Boolean(loginAnchorEl);
+  const signupId = signupOpen ? 'signup-popover' : undefined;
+  const loginId = loginOpen ? 'login-popover' : undefined;
 
   return (
     <Container>
@@ -35,9 +41,9 @@ export const Navbar = () => {
       >
         <Box sx={{ display: "flex", alignItems: "center" }}>
           <Popover
-            id={id}
-            open={open}
-            anchorEl={anchorEl}
+            id={signupId}
+            open={signupOpen}
+            anchorEl={signupAnchorEl}
             onClose={handleClose}
             anchorOrigin={{
               vertical: 'bottom',
@@ -49,17 +55,41 @@ export const Navbar = () => {
             }}
           >
             <Box sx={{ p: 2 }}>
-            <Link to="/Signup" style={{ textDecoration: 'none' }}>
-              <Typography>User</Typography>
-            </Link>
+              <Link to="/Signup" style={{ textDecoration: 'none' }}>
+                <Typography>User</Typography>
+              </Link>
 
-            <Link to="/Signup" style={{ textDecoration: 'none' }}>
-              <Typography>Broker/Agent</Typography>
-            </Link>
+              <Link to="/Signup" style={{ textDecoration: 'none' }}>
+                <Typography>Broker/Agent</Typography>
+              </Link>
+            </Box>
+          </Popover>
+          <Popover
+            id={loginId}
+            open={loginOpen}
+            anchorEl={loginAnchorEl}
+            onClose={handleClose}
+            anchorOrigin={{
+              vertical: 'bottom',
+              horizontal: 'center',
+            }}
+            transformOrigin={{
+              vertical: 'top',
+              horizontal: 'center',
+            }}
+          >
+            <Box sx={{ p: 2 }}>
+              <Link to="/Login" style={{ textDecoration: 'none' }}>
+                <Typography>User</Typography>
+              </Link>
+
+              <Link to="/Login" style={{ textDecoration: 'none' }}>
+                <Typography>Broker/Agent</Typography>
+              </Link>
             </Box>
           </Popover>
           <Title>realEstate.</Title>
-          </Box>
+        </Box>
 
         <Box
           sx={{
