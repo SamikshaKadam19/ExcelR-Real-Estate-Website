@@ -21,6 +21,8 @@ body{
   /*background: rgba(5 57 112 / 67%);*/
   background: url("/src/img.jpg") no-repeat ;
   background-size: cover;
+  overflow: hidden; /* Hide scrollbars */
+
 
   
 }
