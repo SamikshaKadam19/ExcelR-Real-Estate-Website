@@ -134,7 +134,6 @@ const Villas = () => {
 
   return (
     <div>
-    <Navbar/>
       <div className="filters">
         <label>
           Filter by Price:
