@@ -14,6 +14,7 @@ const CustomButton = ({
     backgroundColor: backgroundColor,
     color: color,
     fontWeight: "700",
+    
     fontSize: "14px",
     cursor: "pointer",
     padding: "0.5rem 1.25rem",
@@ -28,7 +29,7 @@ const CustomButton = ({
     },
     [theme.breakpoints.down("md")]: {
       margin: (heroBtn || getStartedBtn) && theme.spacing(0, "auto", 3, "auto"),
-      width: (heroBtn || getStartedBtn) && "90%",
+      width: (heroBtn || getStartedBtn) && "80%",
     },
     [theme.breakpoints.down("sm")]: {
       marginTop: guideBtn && theme.spacing(3),

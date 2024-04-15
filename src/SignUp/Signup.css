@@ -22,7 +22,7 @@
    border: none;
    /* border-radius: 5px; */
    margin-top: 3px;
-   box-shadow: 0px 1px 0px 0px rgb(108, 108, 108);
+   box-shadow: 0px 1px 0px 0px rgb(233, 224, 224);
 }
 .heading{
     text-align: center;
@@ -46,4 +46,7 @@
 }
 .account{
     margin-left: 45px;
+}
+body{
+    background: url("/src/img.jpg") no-repeat ;
 }
