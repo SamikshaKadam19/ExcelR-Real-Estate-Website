@@ -17,7 +17,7 @@ import BrokerDashboard from './BrokerDashboard/Brokerdashboard';
 const router = createBrowserRouter([
   {
     path:'/',
-    element:<Hero/>
+    element:<Hero/>,
 },
   {
       path:'/Login',
@@ -28,7 +28,7 @@ const router = createBrowserRouter([
       element:<SignUp/>
   },
   {
-    path:'/Appartment',
+    path:'Login/Appartment',
     element:<Appartment/>
   }
   ,

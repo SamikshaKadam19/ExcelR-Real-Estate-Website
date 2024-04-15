@@ -12,7 +12,6 @@ import Like from './LikedPage/Like';
 import Filter from './Filter/Filter';
 import UserDashboard from './UserDashboard/UserDashboard';
 import BrokerDashboard from './BrokerDashboard/Brokerdashboard'; // Import BrokerDashboard component
-import Hero from './Components/Hero';
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
