@@ -13,11 +13,17 @@ import Wishlist from './Wishlist/Wishlist';
 import Hero from './Components/Hero';
 import UserDashboard from './UserDashboard/UserDashboard';
 import BrokerDashboard from './BrokerDashboard/Brokerdashboard';
+import Home from './Home/Home';
+import LoginBroker from './Login/LoginBroker';
 
 const router = createBrowserRouter([
   {
     path:'/',
     element:<Hero/>,
+},
+{
+  path:'/App',
+  element:<Home/>
 },
   {
       path:'/Login',
@@ -29,6 +35,12 @@ const router = createBrowserRouter([
   },
   {
     path:'Login/Appartment',
+
+    path:'/LoginBroker',
+    element:<LoginBroker/>
+},
+  {
+    path:'/Appartment',
     element:<Appartment/>
   }
   ,

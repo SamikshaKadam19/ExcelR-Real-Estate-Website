@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import userService from './user-service-login'; 
+import loginBroker from './broker-service-login';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -12,7 +12,7 @@ const Login = () => {
     e.preventDefault();
     
     try {
-      const userData = await userService.Login(email, password);
+      const userData = await loginBroker(email, password);
       console.log("Login Success:", userData);
       setLoggedIn(true);
     } catch (error) {

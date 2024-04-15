@@ -83,7 +83,7 @@ export const Navbar = () => {
                 <Typography>User</Typography>
               </Link>
 
-              <Link to="/Login" style={{ textDecoration: 'none' }}>
+              <Link to="/LoginBroker" style={{ textDecoration: 'none' }}>
                 <Typography>Broker/Agent</Typography>
               </Link>
             </Box>
