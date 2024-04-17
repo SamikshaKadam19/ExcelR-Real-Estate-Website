@@ -7,4 +7,4 @@ const brokerUp = (user) => {
     .then((response) => response.data);
 };
 
-export default { brokerUp };
+export default brokerUp ;

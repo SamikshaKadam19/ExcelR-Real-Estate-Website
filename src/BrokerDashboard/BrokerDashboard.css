@@ -51,5 +51,7 @@
   background-color: #fff; /* White background */
   margin-left: 20px; /* Add spacing between sidebar and content */
 }
-
+h3{
+  color: #0f0f0f;
+}
 /* Add more styling as needed */

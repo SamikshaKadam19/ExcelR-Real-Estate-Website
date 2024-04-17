@@ -46,7 +46,7 @@ const Login = () => {
           <Link to="/Signup">Don't have an accout? <span className="text-primary">Create One</span></Link>
         )}
         {loggedIn && (
-          <Link to="/App">Continue to App</Link>
+          <Link to="/broker-dashboard">Continue to App</Link>
         )}
       </div>
     </div>

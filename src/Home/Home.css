@@ -24,3 +24,22 @@ a{
 .listing{
     background-color: white;
 }
+/* Home.css */
+/* Add the following CSS to make the Home component scrollable */
+
+#userDashboard {
+    margin-bottom: 20px;
+    overflow-y: auto ;
+  }
+  
+  .listing {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+  }
+  
+  .carousel {
+    margin-bottom: 20px;
+  }
+  
+  

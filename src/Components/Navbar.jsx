@@ -59,7 +59,7 @@ export const Navbar = () => {
                 <Typography>User</Typography>
               </Link>
 
-              <Link to="/Signup" style={{ textDecoration: 'none' }}>
+              <Link to="/SignupBroker" style={{ textDecoration: 'none' }}>
                 <Typography>Broker/Agent</Typography>
               </Link>
             </Box>

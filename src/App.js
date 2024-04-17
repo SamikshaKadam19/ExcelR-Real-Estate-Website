@@ -32,29 +32,27 @@ const App = () => {
     console.log('Search filters:', filters);
   };
   return (
-    <>
-
-    <Filter onSearch={handleSearch} />
-    <div>
-      {isLoggedIn ? (
-        <h1>Welcome! You are logged in.</h1>
-      ) : (
-        <div>
-          <Login handleLogin={handleLogin} />
-          <Signup handleSignup={handleSignup} />
-        </div>
-      )}
+    <div style={{ height: '100vh', overflowY: 'scroll' }}> {/* Set height and overflow for scrolling */}
+      <Filter onSearch={handleSearch} />
+      <div>
+        {isLoggedIn ? (
+          <h1>Welcome! You are logged in.</h1>
+        ) : (
+          <div>
+            <Login handleLogin={handleLogin} />
+            <Signup handleSignup={handleSignup} />
+          </div>
+        )}
+      </div>
+      <Home/>
+      <Login/>
+      <Signup/>
+      <Apartment/>
+      <Banglow/>
+      <Cabin/>
+      <Villas/>
+      <Like/>
     </div>
-    <Home/>
-    <Login/>
-    <Signup/>
-    <Apartment/>
-    <Banglow/>
-    <Cabin/>
-    <Villas/>
-    <Like/>
-    
-    </>
   );
 };
 

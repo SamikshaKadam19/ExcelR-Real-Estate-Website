@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Like from '../LikedPage/Like';
 import '../Apartment/Apartment.css';
-import Navbar from '../Navbar/Navbar';
 import Apartment1 from '../assets/Apartment/Apartment1.jpg';
 import Apartment2 from '../assets/Apartment/apartment 2.jpg';
 import Apartment3 from '../assets/Apartment/Apartment 3.jpg';
@@ -150,7 +149,6 @@ const Apartment = () => {
 
   return (
     <div>
-      <Navbar/>
       <div className="filters">
         <label>
           Filter by Price:
@@ -184,7 +182,7 @@ const Apartment = () => {
             </div>
             <button onClick={() => handleLike(apartment.id)}>
               {apartment.liked ? 'Unlike' : 'Like'}
-            </button>
+            </button> 
             <Link to={`/apartment/${apartment.id}`}>
               View Details
             </Link>

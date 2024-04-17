@@ -1,8 +1,7 @@
 
 import { Link } from 'react-router-dom';
-import './.css';
 import React, { useState } from 'react';
-import userService from './user-service-signup'; // Import the service
+import brokerUp from './broker-service-signup'; // Import the service
 
 const SignupBroker = ({ handleSignup }) => {
   const [email, setEmail] = useState('');
@@ -22,7 +21,7 @@ const SignupBroker = ({ handleSignup }) => {
       password: password,
     };
 
-    userService.signUp(user)
+    brokerUp(user)
       .then((resp) => {
         console.log(resp);
         console.log("Success");
@@ -48,28 +47,28 @@ const SignupBroker = ({ handleSignup }) => {
           <form id="formvalidate" onSubmit={handleSubmit}>
             <div className="input-group">
 
-              <input className="form-control" name="userAddress" id="userAddress" type="text" placeholder="User Name" value={address} onChange={(e)=>setUsername(e.target.value)} autoComplete="off" />
+              <input className="form-control" name="userAddress" id="userAddress" type="text" placeholder="User Address" value={address} onChange={(e)=>setAddress(e.target.value)} autoComplete="off" />
               <span className="lighting"></span>
             </div>
             <div className="input-group">
 
-              <input className="form-control" name="userContact" id="userContact" type="text" placeholder="userContact"  value={contact} onChange={(e)=>setPassword(e.target.value)} autoComplete="off" />
+              <input className="form-control" name="userContact" id="userContact" type="text" placeholder="userContact"  value={contact} onChange={(e)=>setContact(e.target.value)} autoComplete="off" />
               <span className="lighting"></span>
             </div>
             <div className="input-group">
 
-              <input className="form-control" name="userEmail" id="userEmail" type="email" placeholder="Email"  value={email} onChange={(e)=>setPassword(e.target.value)} autoComplete="off" />
+              <input className="form-control" name="userEmail" id="userEmail" type="email" placeholder="Email"  value={email} onChange={(e)=>setEmail(e.target.value)} autoComplete="off" />
               <span className="lighting"></span>
             </div>
             <div className="input-group">
 
-              <input className="form-control" name="userName" id="userName" type="text" placeholder="userName"  value={name} onChange={(e)=>setPassword(e.target.value)} autoComplete="off" />
+              <input className="form-control" name="userName" id="userName" type="text" placeholder="userName"  value={name} onChange={(e)=>setUsername(e.target.value)} autoComplete="off" />
               <span className="lighting"></span>
             </div>
 
             <div className="input-group">
 
-              <input className="form-control" name="userPassword" id="userPassword" type="password" placeholder="userPassword"  value={password} onChange={(e)=>setEmail(e.target.value)} autoComplete="off" />
+              <input className="form-control" name="userPassword" id="userPassword" type="password" placeholder="userPassword"  value={password} onChange={(e)=>setPassword(e.target.value)} autoComplete="off" />
               <span className="lighting"></span>
 
             </div>
@@ -85,4 +84,4 @@ const SignupBroker = ({ handleSignup }) => {
   );
 };
 
-export default Signup;
+export default SignupBroker;

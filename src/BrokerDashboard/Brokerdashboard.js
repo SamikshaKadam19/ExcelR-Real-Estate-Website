@@ -3,9 +3,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom'; 
 import PropertyForm from './PropertyForm';
-import PropertyCard from './PropertyCard';
-import LikedProperties from './LikedProperty';
-import BrokerInfo from './BrokerInfo';
+import PropertyDashboard from './PropertyDashboard';
 import '../BrokerDashboard/BrokerDashboard.css'; // Import CSS file for styling
 
 
@@ -28,7 +26,6 @@ const BrokerDashboard = () => {
             <h3>Menu</h3>
           </div>
           <ul className="sidebar-menu">
-            <li className={`sidebar-menu-item ${view === 'info' ? 'active' : ''}`} onClick={() => setView('info')}>Broker Information</li>
             <li className={`sidebar-menu-item ${view === 'addProperty' ? 'active' : ''}`} onClick={() => setView('addProperty')}>Add Property</li>
             <li className={`sidebar-menu-item ${view === 'propertyList' ? 'active' : ''}`} onClick={() => setView('propertyList')}>Property List</li>
             <li className={`sidebar-menu-item ${view === 'likedProperties' ? 'active' : ''}`} onClick={() => setView('likedProperties')}>Liked Properties</li>
@@ -36,10 +33,8 @@ const BrokerDashboard = () => {
           </ul>
         </div>
         <div className="dashboard-content">
-          {view === 'info' && <BrokerInfo />}
           {view === 'addProperty' && <PropertyForm />}
-          {view === 'propertyList' && <PropertyCard />}
-          {view === 'likedProperties' && <LikedProperties />}
+          {view === 'propertyList' && <PropertyDashboard />}
         </div>
       </div>
     );

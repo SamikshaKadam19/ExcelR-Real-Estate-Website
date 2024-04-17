@@ -1,50 +1,74 @@
 import React, { useState } from 'react';
 import '../BrokerDashboard/PropertyForm.css';
 
-const PropertyForm = () => {
+const PropertyForm = ({ brokerId }) => {
   const [property, setProperty] = useState({
-    name: '',
-    type: '',
     price: '',
-    location: '',
-    amenities: '',
-    photo: '',
-    city: ''
+    address: '',
+    area: '',
+    type: '',
+    brokerId: brokerId || '', // Initialize with the provided brokerId or an empty string
   });
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setProperty({ ...property, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Add your submit logic here
-    console.log('Submitted:', property);
-    // Reset form fields
-    setProperty({
-      name: '',
-      type: '',
-      price: '',
-      location: '',
-      amenities: '',
-      photo: '',
-      city: ''
-    });
+    setError('');
+    setLoading(true);
+
+    // Validate brokerId
+    if (!property.brokerId) {
+      setError('Broker Id is required');
+      setLoading(false);
+      return;
+    }
+
+    try {
+      const response = await fetch('http://localhost:8081/Property/Add', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(property)
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to add property');
+      }
+
+      console.log('Property added successfully');
+      setProperty({
+        price: '',
+        address: '',
+        area: '',
+        type: '',
+        brokerId: brokerId || '', // Reset brokerId to the provided value or an empty string
+      });
+    } catch (error) {
+      console.error('Error:', error.message);
+      setError('Failed to add property');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
     <div className="property-form-container">
       <h2>Add Property</h2>
       <form onSubmit={handleSubmit}>
-        <input type="text" name="name" placeholder="Property Name" value={property.name} onChange={handleChange} />
-        <input type="text" name="type" placeholder="Property Type" value={property.type} onChange={handleChange} />
-        <input type="text" name="price" placeholder="Price" value={property.price} onChange={handleChange} />
-        <input type="text" name="location" placeholder="Location" value={property.location} onChange={handleChange} />
-        <input type="text" name="amenities" placeholder="Amenities" value={property.amenities} onChange={handleChange} />
-        <input type="text" name="photo" placeholder="Photo URL" value={property.photo} onChange={handleChange} />
-        <input type="text" name="city" placeholder="City" value={property.city} onChange={handleChange} />
-        <button type="submit">Submit</button>
+        <input type="text" name="brokerId" placeholder="Broker Id" value={property.brokerId} onChange={handleChange} required />
+        <input type="text" name="price" placeholder="Property price" value={property.price} onChange={handleChange} required />
+        <input type="text" name="address" placeholder="Property address" value={property.address} onChange={handleChange} required />
+        <input type="text" name="area" placeholder="Area" value={property.area} onChange={handleChange} required />
+        <input type="text" name="type" placeholder="Type" value={property.type} onChange={handleChange} required />
+        {error && <div className="error">{error}</div>}
+        <button type="submit" disabled={loading}>{loading ? 'Submitting...' : 'Submit'}</button>
       </form>
     </div>
   );

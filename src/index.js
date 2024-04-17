@@ -15,7 +15,7 @@ import UserDashboard from './UserDashboard/UserDashboard';
 import BrokerDashboard from './BrokerDashboard/Brokerdashboard';
 import Home from './Home/Home';
 import LoginBroker from './Login/LoginBroker';
-
+import SignupBroker from './SignUp/SignupBroker';
 const router = createBrowserRouter([
   {
     path:'/',
@@ -33,6 +33,10 @@ const router = createBrowserRouter([
       path:'/SignUp',
       element:<SignUp/>
   },
+  {
+    path:'/SignUpBroker',
+    element:<SignupBroker/>
+},
   {
     path:'Login/Appartment',
 

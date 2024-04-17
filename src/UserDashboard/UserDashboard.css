@@ -138,4 +138,5 @@ textarea {
   .dashboard-content {
     padding: 10px;
   }
+  html { overflow-y: scroll; overflow-x:hidden; }
 }
