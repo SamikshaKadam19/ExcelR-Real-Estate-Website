@@ -1,12 +1,22 @@
+html{
+  min-height: 100vh;  
+  max-width: 100vw;
 
+}
+
+.MuiContainer-root button{
+  margin-top: 1rem;
+}
 
 body {
-  margin: 0;
+  margin: 0;  
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow: hidden;
+
 }
 
 code {
@@ -17,10 +27,7 @@ code {
 
 
 body{
-  font-family: 'Times New Roman', Times, serif;
   /*background: rgba(5 57 112 / 67%);*/
-  background-size: cover;
-  overflow: hidden; /* Hide scrollbars */
 
 
   

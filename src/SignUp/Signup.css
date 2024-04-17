@@ -48,5 +48,10 @@
     margin-left: 45px;
 }
 body{
-    background: url("/src/img.jpg") no-repeat ;
+    /* When you want to center the image and set the same image as full background-image  */
+    min-height: 100%;
+   background-image: url("../img.jpg");
+   background-size: cover;
+   background-repeat: no-repeat;
+   background-position: center center;
 }
