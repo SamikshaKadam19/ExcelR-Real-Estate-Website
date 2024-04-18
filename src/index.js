@@ -16,6 +16,7 @@ import BrokerDashboard from './BrokerDashboard/Brokerdashboard';
 import Home from './Home/Home';
 import LoginBroker from './Login/LoginBroker';
 import SignupBroker from './SignUp/SignupBroker';
+import PropDetails from './PropertyDetails/PropertyDetails';
 const router = createBrowserRouter([
   {
     path:'/',
@@ -69,6 +70,10 @@ const router = createBrowserRouter([
   {
      path:'/Wishlist',
      element:<Wishlist/>
+  },
+  {
+     path:'/Popup',
+     element:<PropDetails/>
   },
   {
     path:'/dashboard',

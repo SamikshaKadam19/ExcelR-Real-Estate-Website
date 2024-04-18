@@ -2,7 +2,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../Banglow/Banglow.css';
-import Navbar from '../Navbar/Navbar';
 import Like from '../LikedPage/Like';
 import Banglow1 from '../assets/Banglow/Banglow1.jpg';
 import Banglow2 from '../assets/Banglow/Banglow 2.jpg';
@@ -11,6 +10,7 @@ import Banglow4 from '../assets/Banglow/Banglow 4.jpg';
 import Banglow5 from '../assets/Banglow/Banglow5.jpg';
 import Banglow6 from '../assets/Banglow/Banglow6.jpg';
 import Banglow7 from '../assets/Banglow/Banglow7.jpg';
+import Popup from '../PropertyDetails/PropertyDetails';
 
 const Banglow = () => {
   const [likedBanglows, setLikedBanglows] = useState([]);
@@ -19,6 +19,12 @@ const Banglow = () => {
     price: '',
     type: ''
   });
+
+  const [isOpen, setIsOpen] = useState(false); 
+
+  const handleButtonClick = () => {
+    setIsOpen(!isOpen); 
+  };
 
   const banglows = [
     {
@@ -78,7 +84,7 @@ const Banglow = () => {
       description: 'Charming bungalow with three bedrooms, offering a tranquil retreat.'
     },
     {
-      id: 6,
+      id: 8,
       image: Banglow6,
       liked: false,
       price: 300000,
@@ -86,7 +92,7 @@ const Banglow = () => {
       description: 'Rustic bungalow with three bedrooms, nestled amidst nature.'
     },
     {
-      id: 7,
+      id: 9,
       image: Banglow7,
       liked: false,
       price: 300000,
@@ -94,7 +100,7 @@ const Banglow = () => {
       description: 'Charming bungalow with three bedrooms, offering a tranquil retreat.'
     },
     {
-      id: 7,
+      id: 10,
       image: Banglow7,
       liked: false,
       price: 300000,
@@ -162,9 +168,25 @@ const Banglow = () => {
             <button onClick={() => handleLike(banglow.id)}>
               {banglow.liked ? 'Unlike' : 'Like'}
             </button>
-            <Link to={`/banglow/${banglow.id}`}>
-              View Details
-            </Link>
+            <button onClick={handleButtonClick}>View Details</button>
+            {isOpen && ( // Conditionally render popup content
+        <div className="popup">
+          {/* Your popup content here */}
+          
+        <div className="showPopUp">
+            <ul className='DisplayPropertyItems'>
+            <li> Include Parks</li>
+            <li>Schools</li>
+            <li>Shopping Center</li>
+            <li>Public Transportation</li>
+            <li>Swimming Pool</li>
+            <li>Fitness Center</li>
+            <li></li>
+            </ul>
+        </div>
+          <button onClick={handleButtonClick}>Close Popup</button>
+        </div>
+      )}
           </div>
         ))}
       </div>

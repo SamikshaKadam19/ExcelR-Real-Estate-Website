@@ -15,7 +15,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow: hidden;
+  /* overflow: hidden; */
 
 }
 
@@ -96,6 +96,17 @@ button {
   font-size: 20px;
   transition: 0.3s linear;
 }
+
+.showPopUp{
+  border: 2px solid rgb(255, 255, 255);
+  border-radius: 1rem;
+  max-width: 15rem;
+}
+.showPopUp ul {
+  list-style: none;
+  color: black;
+  overflow: hidden;
+  }
 
 .input-group {
   position: relative;
