@@ -22,6 +22,7 @@ const Signup = ({ handleSignup }) => {
       .then((resp) => {
         console.log(resp);
         console.log("Success");
+        handleSignup();
         // Optionally, you can call handleSignup here if needed
       })
       .catch((error) => {
