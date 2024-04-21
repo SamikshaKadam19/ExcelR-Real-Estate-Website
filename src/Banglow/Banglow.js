@@ -1,176 +1,100 @@
-// Banglow.js
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import '../Banglow/Banglow.css';
-import Navbar from '../Navbar/Navbar';
-import Like from '../LikedPage/Like';
-import Banglow1 from '../assets/Banglow/Banglow1.jpg';
-import Banglow2 from '../assets/Banglow/Banglow 2.jpg';
-import Banglow3 from '../assets/Banglow/Banglow3.jpg';
-import Banglow4 from '../assets/Banglow/Banglow 4.jpg';
-import Banglow5 from '../assets/Banglow/Banglow5.jpg';
-import Banglow6 from '../assets/Banglow/Banglow6.jpg';
-import Banglow7 from '../assets/Banglow/Banglow7.jpg';
+import banglowImage from '../assets/Banglow/Banglow 4.jpg';
+import '../Banglow/Banglow.css'
 
 const Banglow = () => {
-  const [likedBanglows, setLikedBanglows] = useState([]);
-  // Sample bungalow data
-  const [filter, setFilter] = useState({
-    price: '',
-    type: ''
-  });
+  const [properties, setProperties] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [selectedProperty, setSelectedProperty] = useState(null); // State to store the selected property
+  const [likedProperties, setLikedProperties] = useState([]);
 
-  const banglows = [
-    {
-      id: 1,
-      image: Banglow1,
-      liked: false,
-      price: 200000,
-      type: '1BHK',
-      description: 'Cozy bungalow with two bedrooms, ideal for small families.'
-    },
-    {
-      id: 2,
-      image: Banglow2,
-      liked: false,
-      price: 300000,
-      type: '3BHK',
-      description: 'Spacious bungalow with three bedrooms, perfect for large families.'
-    },
-    {
-      id: 3,
-      image: Banglow3,
-      liked: false,
-      price: 300000,
-      type: '2BHK',
-      description: 'Luxurious bungalow with three bedrooms, offering premium amenities.'
-    },
-    {
-      id: 4,
-      image: Banglow4,
-      liked: false,
-      price: 300000,
-      type: '1RK',
-      description: 'Modern bungalow with three bedrooms, featuring contemporary design.'
-    },
-    {
-      id: 5,
-      image: Banglow5,
-      liked: false,
-      price: 300000,
-      type: '1BHK',
-      description: 'Elegant bungalow with three bedrooms, showcasing sophistication.'
-    },
-    {
-      id: 6,
-      image: Banglow6,
-      liked: false,
-      price: 300000,
-      type: '2BHK',
-      description: 'Rustic bungalow with three bedrooms, nestled amidst nature.'
-    },
-    {
-      id: 7,
-      image: Banglow7,
-      liked: false,
-      price: 300000,
-      type: '3BHK',
-      description: 'Charming bungalow with three bedrooms, offering a tranquil retreat.'
-    },
-    {
-      id: 6,
-      image: Banglow6,
-      liked: false,
-      price: 300000,
-      type: '1BHK',
-      description: 'Rustic bungalow with three bedrooms, nestled amidst nature.'
-    },
-    {
-      id: 7,
-      image: Banglow7,
-      liked: false,
-      price: 300000,
-      type: '3BHK',
-      description: 'Charming bungalow with three bedrooms, offering a tranquil retreat.'
-    },
-    {
-      id: 7,
-      image: Banglow7,
-      liked: false,
-      price: 300000,
-      type: '3BHK',
-      description: 'Charming bungalow with three bedrooms, offering a tranquil retreat.'
-    },
-    // Add more bungalow data here
-  ];
+  useEffect(() => {
+    setLoading(true);
+    fetchProperties();
+    const likedPropertiesFromStorage = localStorage.getItem('likedProperties');
+    if (likedPropertiesFromStorage) {
+      setLikedProperties(JSON.parse(likedPropertiesFromStorage));
+    }
+  }, []);
+
+  const fetchProperties = () => {
+    setLoading(true);
+    fetch(`http://localhost:8081/Property/filtertypes/bungalow`)
+      .then(response => response.json())
+      .then(data => {
+        setProperties(data);
+        setLoading(false);
+      })
+      .catch(error => {
+        console.error('Error fetching properties:', error);
+        setLoading(false);
+      });
+  };
 
   const handleLike = (id) => {
-    // Find the liked bungalow
-    const likedBanglow = banglows.find(banglow => banglow.id === id);
-    // Set the liked property to true
-    likedBanglow.liked = true;
-    // Update the liked bungalows list
-    setLikedBanglows(prevLikedBanglows => [...prevLikedBanglows, likedBanglow]);
+    const updatedProperties = properties.map(property => {
+      if (property.prop_id === id) {
+        return { ...property, liked: !property.liked };
+      }
+      return property;
+    });
+    setProperties(updatedProperties);
+    
+    const updatedLikedProperties = updatedProperties
+      .filter(property => property.liked)
+      .map(property => ({ prop_id: property.prop_id, price: property.price, type: property.type, area: property.area, brokerId: property.brokerId, address: property.address }));
+    
+    setLikedProperties(updatedLikedProperties);
+    localStorage.setItem('likedProperties', JSON.stringify(updatedLikedProperties));
   };
 
-  const handleFilterChange = (event) => {
-    const { name, value } = event.target;
-    setFilter({ ...filter, [name]: value });
+  const handleViewDetails = (property) => {
+    setSelectedProperty(property); // Set the selected property when "View Details" button is clicked
   };
 
-  const filteredBanglows = banglows.filter(banglow => {
-    return (
-      (!filter.price || banglow.price <= parseInt(filter.price)) &&
-      (!filter.type || banglow.type === filter.type)&&
-      (!filter.postalCode || banglow.postalCode === filter.postalCode)
-    );
-  });
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div>
-      <div className="filters">
-        <label>
-          Filter by Price:
-          <input type="number" name="price" value={filter.price} onChange={handleFilterChange} />
-        </label>
-        <label>
-          Filter by Type:
-          <select name="type" value={filter.type} onChange={handleFilterChange}>
-            <option value="">All</option>
-            <option value="1RK">1RK</option>
-            <option value="1BHK">1BHK</option>
-            <option value="1BHK">2BHK</option>
-            {/* Add options for bungalow types */}
-          </select>
-        </label>
-        <label>
-          Filter by Postal Code:
-          <input type="text" name="postalCode" value={filter.postalCode} onChange={handleFilterChange} />
-        </label>
-      </div>
-
       <div className="property-list">
-        {filteredBanglows.map((banglow) => (
-          <div key={banglow.id} className="property-card">
-            <img src={banglow.image} alt={`Banglow ${banglow.id}`} />
-            <div className="banglow-details">
-              <h3>{`Banglow ${banglow.id}`}</h3>
-              <p><strong>Price:</strong> ${banglow.price}</p>
-              <p><strong>Type:</strong> {banglow.type}</p>
-              <p><strong>Description:</strong> {banglow.description}</p>
+        {properties.map((property) => (
+          <div key={property.prop_id} className="property-card">
+            <img src={banglowImage} alt={`Apartment ${property.prop_id}`} />
+            <div className="property-details">
+              <p><strong>Property Id:</strong> {property.prop_id}</p>
+              <p><strong>Price:</strong> {property.price}</p>
+              <p><strong>Type:</strong> {property.type}</p>
+              <p><strong>Area:</strong> {property.area}</p>
+              <p><strong>BrokerId:</strong> {property.brokerId}</p>
+              <p><strong>Address:</strong> {property.address}</p>
             </div>
-            <button onClick={() => handleLike(banglow.id)}>
-              {banglow.liked ? 'Unlike' : 'Like'}
+            <button onClick={() => handleLike(property.prop_id)}>
+              {property.liked ? 'Unlike' : 'Like'}
             </button>
-            <Link to={`/banglow/${banglow.id}`}>
-              View Details
-            </Link>
+            <button onClick={() => handleViewDetails(property)}>View Details</button>
+
+            {/* Conditionally render property details within the same card */}
+            {selectedProperty && selectedProperty.prop_id === property.prop_id && (
+              <div className="popup">
+                <div className="popup-content">
+                <p><strong>Facing:</strong> {selectedProperty.facing}</p>
+                  <p><strong>Negotiable:</strong> {selectedProperty.negotiable}</p>
+                  <p><strong>Deposite:</strong> {selectedProperty.deposite}</p>
+                  <p><strong>Floor No:</strong> {selectedProperty.floor_no}</p>
+                  <p><strong>Rent:</strong> {selectedProperty.rent}</p>
+                  <p><strong>Year Built:</strong> {selectedProperty.year_built}</p>
+                  <button onClick={() => setSelectedProperty(null)}>Close</button>
+                </div>
+              </div>
+            )}
           </div>
         ))}
       </div>
-     <Link to='/Villas'> <button className='villabutton'>Go To Viilas</button></Link>
-      {/* Pass likedBanglows state and setLikedBanglows function as props to Like component */}
-      <Like likedItems={likedBanglows} />
+
+      <Link to="/dashboard">View Wishlist</Link>
     </div>
   );
 };

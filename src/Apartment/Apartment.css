@@ -86,10 +86,10 @@
 
 /* Property cards */
 .property-list {
-  display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   grid-gap: 20px;
   margin-top: 20px; /* Add margin at the top of the property list */
+  display: flex;
 }
 
 .property-card {
@@ -100,6 +100,7 @@
   margin-bottom: 20px; /* Add margin at the bottom of each card */
   transition: transform 0.3s; /* Add transition for smooth hover effect */
   padding: 10px;
+  size:15rem
 }
 
 .property-card img {

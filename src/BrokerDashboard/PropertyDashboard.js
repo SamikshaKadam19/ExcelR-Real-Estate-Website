@@ -15,20 +15,22 @@ const PropertyCard = ({ property }) => {
 const PropertyDashboard = () => {
   const [properties, setProperties] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [brokerId, setBrokerId] = useState(1); // Set the initial broker ID
+  const [brokerId, setBrokerId] = useState(''); // Initialize with an empty string
 
   useEffect(() => {
-    setLoading(true);
-    fetch(`http://localhost:8081/Property/broker/${brokerId}`)
-      .then(response => response.json())
-      .then(data => {
-        setProperties(data);
-        setLoading(false);
-      })
-      .catch(error => {
-        console.error('Error fetching properties:', error);
-        setLoading(false);
-      });
+    if (brokerId) {
+      setLoading(true);
+      fetch(`http://localhost:8081/Property/broker/${brokerId}`)
+        .then(response => response.json())
+        .then(data => {
+          setProperties(data);
+          setLoading(false);
+        })
+        .catch(error => {
+          console.error('Error fetching properties:', error);
+          setLoading(false);
+        });
+    }
   }, [brokerId]); // Fetch properties whenever brokerId changes
 
   const handleBrokerIdChange = (e) => {
@@ -42,7 +44,7 @@ const PropertyDashboard = () => {
   return (
     <div>
       <h2>Property Dashboard</h2>
-      <label htmlFor="brokerId">Broker ID:</label>
+      <label htmlFor="brokerId">Enter Broker ID:</label>
       <input type="number" id="brokerId" value={brokerId} onChange={handleBrokerIdChange} />
       <div className="property-list">
         {properties.map(property => (

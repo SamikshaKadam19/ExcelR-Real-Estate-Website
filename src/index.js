@@ -75,6 +75,10 @@ const router = createBrowserRouter([
     element:<UserDashboard/>
  },
  {
+  path:'/wishlist',
+  element:<Wishlist/>
+},
+ {
   path:'/broker-dashboard',
   element:<BrokerDashboard/>
 }

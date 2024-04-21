@@ -1,39 +1,55 @@
+// Wishlist.js
+import React, { useState, useEffect } from 'react';
+import '../Wishlist/Wishlist.css';
 
-import Navbar from '../Navbar/Navbar'
-
-import React, { useState } from 'react';
-
-const Wishlist = () => {
+const Wishlist = ({ location }) => {
   const [likedProperties, setLikedProperties] = useState([]);
 
-  // Function to remove a property from the wishlist
-  const removeFromWishlist = (propertyId) => {
-    setLikedProperties(likedProperties.filter(property => property.id !== propertyId));
+  useEffect(() => {
+    const likedPropertiesFromStorage = localStorage.getItem('likedProperties');
+    let mergedLikedProperties = [];
+
+    if (likedPropertiesFromStorage) {
+      mergedLikedProperties = JSON.parse(likedPropertiesFromStorage);
+    }
+
+    if (location && location.state && location.state.likedProperties) {
+      mergedLikedProperties = [...mergedLikedProperties, ...location.state.likedProperties];
+    }
+
+    setLikedProperties(mergedLikedProperties);
+  }, [location]);
+
+  const removeFromWishlist = (propId) => {
+    const updatedProperties = likedProperties.filter(property => property.prop_id !== propId);
+    setLikedProperties(updatedProperties);
+    localStorage.setItem('likedProperties', JSON.stringify(updatedProperties));
   };
 
   return (
     <div>
- 
       <h1>Wishlist</h1>
-      {likedProperties.length === 0 ? (
+      {likedProperties && likedProperties.length === 0 ? (
         <p>Your wishlist is empty.</p>
       ) : (
-        <ul>
-          {likedProperties.map(property => (
-            <li key={property.id}>
-              <img src={property.image} alt={property.title} />
-              <div>
-                <h3>{property.title}</h3>
-                <p>{property.description}</p>
-                <button onClick={() => removeFromWishlist(property.id)}>Remove</button>
+        <div className="card-container">
+          {likedProperties.map((property, index) => (
+            <div key={index} className="card">
+              <div className="property-details">
+                <p><strong>Property Id:</strong> {property.prop_id}</p>
+                <p><strong>Price:</strong> {property.price}</p>
+                <p><strong>Type:</strong> {property.type}</p>
+                <p><strong>Area:</strong> {property.area}</p>
+                <p><strong>BrokerId:</strong> {property.brokerId}</p>
+                <p><strong>Address:</strong> {property.address}</p>
+                <button onClick={() => removeFromWishlist(property.prop_id)}>Remove</button>
               </div>
-            </li>
+            </div>
           ))}
-        </ul>
+        </div>
       )}
     </div>
   );
 };
 
 export default Wishlist;
-

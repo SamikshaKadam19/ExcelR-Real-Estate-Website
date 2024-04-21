@@ -25,65 +25,56 @@ const PropertyFilter = ({ cities, onSearch }) => {
     const mockProperties = [
       {
         id: 1,
-        title: 'Beautiful Apartment 1',
+        title: 'Beautiful Apartment ',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-        image: 'https://example.com/apartment-image1.jpg',
         type: 'apartment'
       },
       {
         id: 2,
-        title: 'Luxurious Villa 1',
+        title: 'Luxurious Villa',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-        image: 'https://example.com/villa-image1.jpg',
         type: 'villa'
       },
       {
         id: 3,
-        title: 'Modern Bungalow 1',
+        title: 'Modern Bungalow ',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-        image: 'https://example.com/bungalow-image1.jpg',
         type: 'bungalow'
       },
       {
         id: 4,
-        title: 'Beautiful Apartment 2',
+        title: 'Beautiful Apartment ',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-        image: 'https://example.com/apartment-image2.jpg',
         type: 'apartment'
       },
       {
         id: 5,
-        title: 'Luxurious Villa 2',
+        title: 'Luxurious Villa',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-        image: 'https://example.com/villa-image2.jpg',
         type: 'villa'
       },
       {
         id: 6,
-        title: 'Modern Bungalow 2',
+        title: 'Modern Bungalow',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-        image: 'https://example.com/bungalow-image2.jpg',
         type: 'bungalow'
       },
       {
         id: 7,
-        title: 'Beautiful Apartment 3',
+        title: 'Beautiful Apartment',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-        image: 'https://example.com/apartment-image3.jpg',
         type: 'apartment'
       },
       {
         id: 8,
-        title: 'Luxurious Villa 3',
+        title: 'Luxurious Villa',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-        image: 'https://example.com/villa-image3.jpg',
         type: 'villa'
       },
       {
         id: 9,
-        title: 'Modern Bungalow 3',
+        title: 'Modern Bungalow',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-        image: 'https://example.com/bungalow-image3.jpg',
         type: 'bungalow'
       },
       // Add more property objects as needed
@@ -153,7 +144,7 @@ const PropertyFilter = ({ cities, onSearch }) => {
           value={propertyType}
           onChange={e => {
             setPropertyType(e.target.value);
-            setRoomType(''); // Reset room type when property type changes
+            setRoomType(''); 
           }}
           className="select-field"
         >
@@ -161,12 +152,8 @@ const PropertyFilter = ({ cities, onSearch }) => {
           <option value="apartment">Apartment</option>
           <option value="bungalow">Bungalow</option>
           <option value="villa">Villa</option>
-          <option value="rented_house">Rented House</option>
-          <option value="commercial_area">Commercial Area</option>
-          {/* Add more property types as needed */}
         </select>
 
-        {/* Render room options based on selected property type */}
         {propertyType && (
           <select
             value={roomType}

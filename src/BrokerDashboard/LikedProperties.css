@@ -1,0 +1,21 @@
+.user-state-card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-top: 16px;
+  }
+  
+  .user-state-card h3 {
+    margin-top: 16px;
+  }
+  
+  .user-state-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-gap: 20px;
+  }
+  
+  /* Adjust grid layout properties as needed */
+  

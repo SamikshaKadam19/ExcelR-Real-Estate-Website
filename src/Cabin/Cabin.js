@@ -1,177 +1,112 @@
-// Cabin.js
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import cabinImage from '../assets/Cabin/Cabin8.jpg';
 import '../Cabin/Cabin.css';
-import Navbar from '../Navbar/Navbar';
-import Like from '../LikedPage/Like';
-import Cabin1 from '../assets/Cabin/Cabin1.jpg';
-import Cabin2 from '../assets/Cabin/CAbin2.webp';
-import Cabin3 from '../assets/Cabin/Cabin3.jpg';
-import Cabin4 from '../assets/Cabin/Cabin4.jpeg';
-import Cabin5 from '../assets/Cabin/Cabin5.jpeg';
-import Cabin6 from '../assets/Cabin/Cabin6.webp';
-import Cabin7 from '../assets/Cabin/Cabin7.jpg';
-import Cabin8 from '../assets/Cabin/Cabin8.jpg';
-import Cabin9 from '../assets/Cabin/Cabin9.avif';
 
 const Cabin = () => {
-  const [likedCabins, setLikedCabins] = useState([]);
-  // Sample cabin data
-  const [filter, setFilter] = useState({
-    price: '',
-    type: ''
-  });
+  const [properties, setProperties] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [selectedProperty, setSelectedProperty] = useState(null); // State to store the selected property
+  const [likedProperties, setLikedProperties] = useState([]);
+  const [isOpen, setIsOpen] = useState(false); // State to control popup visibility
 
-  
+  const handleButtonClick = () => {
+    setIsOpen(!isOpen); // Toggle popup visibility on button click
+  };
 
-  const cabins = [
-    {
-      id: 1,
-      image: Cabin1,
-      liked: false,
-      price: 150000,
-      type: 'Wooden',
-      description: 'Rustic cabins made of wood, perfect for a cozy retreat in nature.'
-    },
-    {
-      id: 2,
-      image: Cabin2,
-      liked: false,
-      price: 200000,
-      type: 'Log',
-      description: 'Traditional log cabins with modern amenities, offering a blend of comfort and nature.'
-    },
-    {
-      id: 3,
-      image: Cabin3,
-      liked: false,
-      price: 200000,
-      type: 'Log',
-      description: 'Secluded log cabins surrounded by picturesque landscapes, ideal for a peaceful getaway.'
-    },
-    {
-      id: 4,
-      image: Cabin4,
-      liked: false,
-      price: 200000,
-      type: 'Log',
-      description: 'Charming log cabins nestled amidst lush forests, providing a tranquil retreat.'
-    },
-    {
-      id: 5,
-      image: Cabin5,
-      liked: false,
-      price: 200000,
-      type: 'Log',
-      description: 'Cozy log cabins with rustic interiors, offering a cozy atmosphere for relaxation.'
-    },
-    {
-      id: 6,
-      image: Cabin6,
-      liked: false,
-      price: 200000,
-      type: 'Log',
-      description: 'Modern log cabins featuring spacious layouts and breathtaking views of nature.'
-    },
-    {
-      id: 7,
-      image: Cabin7,
-      liked: false,
-      price: 200000,
-      type: 'Log',
-      description: 'Quaint log cabins with comfortable furnishings and serene surroundings.'
-    },
-    {
-      id: 8,
-      image: Cabin8,
-      liked: false,
-      price: 200000,
-      type: 'Log',
-      description: 'Tranquil log cabins offering a peaceful escape from the hustle and bustle of city life.'
-    },
-    {
-      id: 9,
-      image: Cabin9,
-      liked: false,
-      price: 200000,
-      type: 'Log',
-      description: 'Cozy log cabins nestled in the mountains, providing a serene retreat amidst nature.'
-    },
-    {
-      id: 9,
-      image: Cabin9,
-      liked: false,
-      price: 200000,
-      type: 'Log',
-      description: 'Cozy log cabins nestled in the mountains, providing a serene retreat amidst nature.'
-    },
-    // Add more cabin data here
-    // Add more cabin data here
-  ];
+  useEffect(() => {
+    setLoading(true);
+    fetchProperties();
+    const likedPropertiesFromStorage = localStorage.getItem('likedProperties');
+    if (likedPropertiesFromStorage) {
+      setLikedProperties(JSON.parse(likedPropertiesFromStorage));
+    }
+  }, []);
+
+  const fetchProperties = () => {
+    setLoading(true);
+    fetch(`http://localhost:8081/Property/filtertypes/cabin`)
+      .then(response => response.json())
+      .then(data => {
+        setProperties(data);
+        setLoading(false);
+      })
+      .catch(error => {
+        console.error('Error fetching properties:', error);
+        setLoading(false);
+      });
+  };
 
   const handleLike = (id) => {
-    // Find the liked cabin
-    const likedCabin = cabins.find(cabin => cabin.id === id);
-    // Set the liked property to true
-    likedCabin.liked = true;
-    // Update the liked cabins list
-    setLikedCabins(prevLikedCabins => [...prevLikedCabins, likedCabin]);
+    const updatedProperties = properties.map(property => {
+      if (property.prop_id === id) {
+        return { ...property, liked: !property.liked };
+      }
+      return property;
+    });
+    setProperties(updatedProperties);
+
+    const updatedLikedProperties = updatedProperties
+      .filter(property => property.liked)
+      .map(property => ({
+        prop_id: property.prop_id,
+        price: property.price,
+        type: property.type,
+        area: property.area,
+        brokerId: property.brokerId,
+        address: property.address
+      }));
+
+    setLikedProperties(updatedLikedProperties);
+    localStorage.setItem('likedProperties', JSON.stringify(updatedLikedProperties));
   };
 
-  const handleFilterChange = (event) => {
-    const { name, value } = event.target;
-    setFilter({ ...filter, [name]: value });
+  const handleViewDetails = (property) => {
+    setSelectedProperty(property); // Set the selected property when "View Details" button is clicked
   };
 
-  const filteredCabins = cabins.filter(cabin => {
-    return (
-      (!filter.price || cabin.price <= parseInt(filter.price)) &&
-      (!filter.type || cabin.type === filter.type)&&
-      (!filter.postalCode || cabin.postalCode === filter.postalCode)
-    );
-  });
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div>
-      <div className="filters">
-        <label>
-          Filter by Price:
-          <input type="number" name="price" value={filter.price} onChange={handleFilterChange} />
-        </label>
-        <label>
-          Filter by Type:
-          <select name="type" value={filter.type} onChange={handleFilterChange}>
-            <option value="">All</option>
-            {/* Add options for cabin types */}
-          </select>
-        </label>
-        <label>
-          Filter by Postal Code:
-          <input type="text" name="postalCode" value={filter.postalCode} onChange={handleFilterChange} />
-        </label>
-      </div>
       <div className="property-list">
-        {filteredCabins.map((cabin) => (
-          <div key={cabin.id} className="property-card">
-            <img src={cabin.image} alt={`Cabin ${cabin.id}`} />
-            <div className="banglow-details">
-              <h3>{`Banglow ${cabin.id}`}</h3>
-              <p><strong>Price:</strong> ${cabin.price}</p>
-              <p><strong>Type:</strong> {cabin.type}</p>
-              <p><strong>Description:</strong> {cabin.description}</p>
+        {properties.map((property) => (
+          <div key={property.prop_id} className="property-card">
+            <img src={cabinImage} alt={`Cabin ${property.prop_id}`} />
+            <div className="property-details">
+              <p><strong>Property Id:</strong> {property.prop_id}</p>
+              <p><strong>Price:</strong> {property.price}</p>
+              <p><strong>Type:</strong> {property.type}</p>
+              <p><strong>Area:</strong> {property.area}</p>
+              <p><strong>BrokerId:</strong> {property.brokerId}</p>
+              <p><strong>Address:</strong> {property.address}</p>
             </div>
-            <button onClick={() => handleLike(cabin.id)}>
-              {cabin.liked ? 'Unlike' : 'Like'}
+            <button onClick={() => handleLike(property.prop_id)}>
+              {property.liked ? 'Unlike' : 'Like'}
             </button>
-            <Link to={`/cabin/${cabin.id}`}>
-              View Details
-            </Link>
+            <button onClick={() => handleViewDetails(property)}>View Details</button>
+
+            {/* Conditionally render property details within the same card */}
+            {selectedProperty && selectedProperty.prop_id === property.prop_id && (
+              <div className="popup">
+                <div className="popup-content">
+                <p><strong>Facing:</strong> {selectedProperty.facing}</p>
+                  <p><strong>Negotiable:</strong> {selectedProperty.negotiable}</p>
+                  <p><strong>Deposite:</strong> {selectedProperty.deposite}</p>
+                  <p><strong>Floor No:</strong> {selectedProperty.floor_no}</p>
+                  <p><strong>Rent:</strong> {selectedProperty.rent}</p>
+                  <p><strong>Year Built:</strong> {selectedProperty.year_built}</p>
+                  <button onClick={() => setSelectedProperty(null)}>Close</button>
+                </div>
+              </div>
+            )}
           </div>
         ))}
       </div>
-      <Link to='/Appartment'> <button className='cabinbutton'>Go To Appartment</button></Link>
-      {/* Pass likedCabins state and setLikedCabins function as props to Like component */}
-      <Like likedItems={likedCabins} />
+
+      <Link to="/dashboard">View Wishlist</Link>
     </div>
   );
 };

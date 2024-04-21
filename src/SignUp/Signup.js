@@ -33,10 +33,7 @@ const Signup = ({ handleSignup }) => {
   return (
     
     <>
-
-
-      <div className="start text-center">
-      </div>
+    <div className='signup'>
       <div className="wrapper">
         <div className="inner-warpper text-center">
           <h2 className="title">Signup</h2>
@@ -65,6 +62,7 @@ const Signup = ({ handleSignup }) => {
         <div className="signup-wrapper text-center">
           <Link to="/Login">Already have an accout? <span className="text-primary">Login</span></Link>
         </div>
+      </div>
       </div>
     </>
   );
