@@ -47,6 +47,16 @@
 .account{
     margin-left: 45px;
 }
+<<<<<<< HEAD
 .signup{
     background: url("/src/img.jpg") no-repeat ;
+=======
+body{
+    /* When you want to center the image and set the same image as full background-image  */
+    min-height: 100%;
+   background-image: url("../img.jpg");
+   background-size: cover;
+   background-repeat: no-repeat;
+   background-position: center center;
+>>>>>>> 2e8fde44371fa7871de3ea8437b29f3a43d8f8f1
 }

@@ -1,12 +1,22 @@
+html{
+  min-height: 100vh;  
+  max-width: 100vw;
 
+}
+
+.MuiContainer-root button{
+  margin-top: 1rem;
+}
 
 body {
-  margin: 0;
+  margin: 0;  
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* overflow: hidden; */
+
 }
 
 code {
@@ -17,9 +27,14 @@ code {
 
 
 body{
-  font-family: 'Times New Roman', Times, serif;
   /*background: rgba(5 57 112 / 67%);*/
+<<<<<<< HEAD
   background-size: cover; 
+=======
+
+
+  
+>>>>>>> 2e8fde44371fa7871de3ea8437b29f3a43d8f8f1
 }
 
 .text-center {
@@ -85,6 +100,17 @@ button {
   font-size: 20px;
   transition: 0.3s linear;
 }
+
+.showPopUp{
+  border: 2px solid rgb(255, 255, 255);
+  border-radius: 1rem;
+  max-width: 15rem;
+}
+.showPopUp ul {
+  list-style: none;
+  color: black;
+  overflow: hidden;
+  }
 
 .input-group {
   position: relative;

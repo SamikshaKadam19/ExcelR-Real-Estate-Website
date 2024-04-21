@@ -1,11 +1,23 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
+import { styled } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import { Container, Popover, Button } from "@mui/material";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
 const Title = Typography;
+
+const Titles = styled(Typography)(({ theme }) => ({
+  fontSize: "40px",
+  color: "#000336",
+  fontWeight: "bold",
+  margin: theme.spacing(4, 0, 4, 0),
+  [theme.breakpoints.down("sm")]: {
+    fontSize: "10px",
+  },
+}));
+
 
 export const Navbar = () => {
   const [signupAnchorEl, setSignupAnchorEl] = useState(null);
@@ -88,7 +100,7 @@ export const Navbar = () => {
               </Link>
             </Box>
           </Popover>
-          <Title>realEstate.</Title>
+          <Titles variant="">realEstate.</Titles>
         </Box>
 
         <Box
